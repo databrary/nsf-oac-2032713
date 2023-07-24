@@ -181,9 +181,11 @@ get_nsf_data_for_pi <- function(pi_last = "Adolph",
       df <- do.call(rbind.data.frame, resps) |>
         dplyr::mutate(awardeeCity = stringr::str_to_title(awardeeCity))
       if (as_tibble) {
-        tibble::as_tibble(df)
+        tibble::as_tibble(df) |>
+          dplyr::filter(stringr::str_detect(piFirstName, pi_first))
       } else {
-        df
+        df |>
+          dplyr::filter(stringr::str_detect(piFirstName, pi_first))
       }
     } else {
       httr::content(r)
@@ -248,6 +250,7 @@ get_nsf_outcomes_for_award_id <- function(nsf_award_id = 1238599,
   }
   httr::content(r)
 }
+
 #------------------------------------------------------------------------------
 get_mult_nsf_awards <-
   function(ids = c("1238599", "1147440"),
@@ -283,8 +286,8 @@ add_clean_nsf_award_id <-
 
 #------------------------------------------------------------------------------
 merge_databrary_nsf_award_df <- function(vol_id, vb = FALSE) {
-  stopifnot(is.numeric(vol_ids))
-  stopifnot(vol_ids > 0)
+  stopifnot(is.numeric(vol_id))
+  stopifnot(vol_id > 0)
   stopifnot(is.logical(vb))
   
   # Get NSF award(s) info from Databrary

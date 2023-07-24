@@ -90,28 +90,13 @@ The latest report can be found at <a href="https://databrary.github.io/analytics
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"R/functions.R"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="illustration-using-the-current-grant" class="section level3 unnumbered">
-<h3>Illustration using the current grant<a class="anchor" aria-label="anchor" href="#illustration-using-the-current-grant"><i class="fas fa-link"></i></a>
-</h3>
-<p>The <code>get_nsf_data_for_award_id()</code> function can be used to gather information from the NSF funding database about the current project.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">nsf_2032713_df</span> <span class="op">&lt;-</span> <span class="fu">get_nsf_data_for_award_id</span><span class="op">(</span><span class="fl">2032713</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">nsf_2032713_df</span></span></code></pre></div>
-<pre><code>## # A tibble: 1 × 11
-##   agency awardeeCity     awardeeName   awardeeStateCode fundsObligatedAmt id   
-##   &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt;             &lt;chr&gt;
-## 1 NSF    University Park Pennsylvania… PA               199977            2032…
-## # ℹ 5 more variables: piFirstName &lt;chr&gt;, piLastName &lt;chr&gt;,
-## #   publicAccessMandate &lt;chr&gt;, date &lt;chr&gt;, title &lt;chr&gt;</code></pre>
-</div>
 <div id="databrary-volumes-that-mention-nsf" class="section level3 unnumbered">
 <h3>Databrary volumes that mention NSF<a class="anchor" aria-label="anchor" href="#databrary-volumes-that-mention-nsf"><i class="fas fa-link"></i></a>
 </h3>
 <p>To query Databrary for the volumes that mention an NSF award, we run the following.</p>
 <p>As of 2023-07-24, volume 1627 was the largest volume index.
 So, we can query Databrary volume-by-volume, to collect data about volumes that list NSF as a funder, as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">db_w_nsf</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1627</span>,</span>
 <span>             <span class="va">get_vol_awards</span>,</span>
@@ -125,10 +110,10 @@ The funding award information is a free text field.
 It would be helpful if a future version of Databrary could validate these entries to reduce <em>post hoc</em> data cleaning.</p>
 </div>
 <p>This takes several moments, so for this report, we import a previously saved file with the same data.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">db_nsf</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"csv/databrary-vols-w-nsf-funding-all.csv"</span>, show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Then, we can start to visualize the data. Here is a table with all of the shared Databrary volumes mentioning NSF as a funder:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">db_nsf</span> <span class="op">&lt;-</span> <span class="va">db_nsf</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">award_id</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://databrary.org/volume/"</span>, <span class="va">vol_id</span><span class="op">)</span><span class="op">)</span></span>
@@ -840,7 +825,1743 @@ url
 <div class="rmdnote">
 <p>Note that we have added a URL that links directly to the shared volume on Databrary.</p>
 </div>
-<p>There are <span class="math inline">\(n=\)</span> 62 shared Databrary volumes that list NSF as a funder.</p>
+<p>There are <span class="math inline">\(n=\)</span> 50 unique shared Databrary volumes that list NSF as a funder, and <span class="math inline">\(n=\)</span> 38 unique NSF awards.
+Some NSF awards have resulted in multiple shared Databrary volumes.</p>
+</div>
+</div>
+<div id="nsf-funding-data-on-these-projects" class="section level2 unnumbered">
+<h2>NSF funding data on these projects<a class="anchor" aria-label="anchor" href="#nsf-funding-data-on-these-projects"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can now match these projects with funding information available about them from NSF directly.</p>
+<div id="illustration-using-the-current-grant" class="section level3 unnumbered">
+<h3>Illustration using the current grant<a class="anchor" aria-label="anchor" href="#illustration-using-the-current-grant"><i class="fas fa-link"></i></a>
+</h3>
+<p>Before we do that, we will illustrate how the <code>get_nsf_data_for_award_id()</code> function can be used to gather information from the NSF funding database about the current project.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf_2032713_df</span> <span class="op">&lt;-</span> <span class="fu">get_nsf_data_for_award_id</span><span class="op">(</span><span class="fl">2032713</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nsf_2032713_df</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 11
+##   agency awardeeCity     awardeeName   awardeeStateCode fundsObligatedAmt id    piFirstName piLastName
+##   &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;     
+## 1 NSF    University Park Pennsylvania… PA               199977            2032… Rick        Gilmore   
+## # ℹ 3 more variables: publicAccessMandate &lt;chr&gt;, date &lt;chr&gt;, title &lt;chr&gt;</code></pre>
+</div>
+<div id="funding-information-from-shared-databrary-volumes" class="section level3" number="2.0.1">
+<h3>
+<span class="header-section-number">2.0.1</span> Funding information from shared Databrary volumes<a class="anchor" aria-label="anchor" href="#funding-information-from-shared-databrary-volumes"><i class="fas fa-link"></i></a>
+</h3>
+<p>To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">summarize_mult_vol_nsf_awards</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1627</span>, vb <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>This takes several minutes, so for this report, we will import a previously saved file with these data.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"csv/databrary-nsf-funding-details-all.csv"</span>, show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p>Now, we can begin to visualize this, as well:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf</span> <span class="op">&lt;-</span> <span class="va">nsf</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">piLastName</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">piFirstName</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">award_id</span><span class="op">)</span><span class="op">)</span></span>
+<span> </span>
+<span><span class="va">nsf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">piLastName</span>, <span class="va">piFirstName</span>, <span class="va">award_id</span>, <span class="va">date</span>, <span class="va">title</span>, <span class="va">vol_id</span>, <span class="va">fundsObligatedAmt</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>piLastName <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">piLastName</span><span class="op">)</span>,</span>
+<span>                piFirstName <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">piFirstName</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">piLastName</span>, <span class="va">award_id</span>, <span class="va">vol_id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_material</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"600px"</span>, height <span class="op">=</span> <span class="st">"300px"</span><span class="op">)</span></span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:600px; ">
+<div class="inline-table"><table class=" lightable-material" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piLastName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piFirstName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+award_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+title
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vol_id
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fundsObligatedAmt
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+1238599
+</td>
+<td style="text-align:left;">
+09/25/2012
+</td>
+<td style="text-align:left;">
+Databrary: An open video-based data-sharing system for developmental science
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2665719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+1627993
+</td>
+<td style="text-align:left;">
+07/27/2016
+</td>
+<td style="text-align:left;">
+NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception
+</td>
+<td style="text-align:right;">
+471
+</td>
+<td style="text-align:right;">
+293783
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+1627993
+</td>
+<td style="text-align:left;">
+07/27/2016
+</td>
+<td style="text-align:left;">
+NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception
+</td>
+<td style="text-align:right;">
+707
+</td>
+<td style="text-align:right;">
+293783
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+1627993
+</td>
+<td style="text-align:left;">
+07/27/2016
+</td>
+<td style="text-align:left;">
+NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception
+</td>
+<td style="text-align:right;">
+1116
+</td>
+<td style="text-align:right;">
+293783
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Arabi
+</td>
+<td style="text-align:left;">
+Mazdak
+</td>
+<td style="text-align:left;">
+1444758
+</td>
+<td style="text-align:left;">
+07/28/2015
+</td>
+<td style="text-align:left;">
+SRN: Urban Water Innovation Network (U-WIN): Transitioning Toward Sustainable Urban Water Systems
+</td>
+<td style="text-align:right;">
+1550
+</td>
+<td style="text-align:right;">
+12741385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cook
+</td>
+<td style="text-align:left;">
+Susan
+</td>
+<td style="text-align:left;">
+1561182
+</td>
+<td style="text-align:left;">
+08/30/2016
+</td>
+<td style="text-align:left;">
+Collaborative Research: Cognitive Mechanisms of Early Math Learning - Improving Outcomes by Harnessing Multiple Memory Representations
+</td>
+<td style="text-align:right;">
+480
+</td>
+<td style="text-align:right;">
+249592
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cunningham
+</td>
+<td style="text-align:left;">
+Christine
+</td>
+<td style="text-align:left;">
+1220305
+</td>
+<td style="text-align:left;">
+09/06/2012
+</td>
+<td style="text-align:left;">
+Exploring the Efficacy of Engineering is Elementary (E4)
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+2999827
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dye
+</td>
+<td style="text-align:left;">
+Matthew
+</td>
+<td style="text-align:left;">
+1749376
+</td>
+<td style="text-align:left;">
+05/17/2018
+</td>
+<td style="text-align:left;">
+Collaborative Research: Multimethod Investigation of Articulatory and Perceptual Constraints on Natural Language Evolution
+</td>
+<td style="text-align:right;">
+1279
+</td>
+<td style="text-align:right;">
+349882
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fenn
+</td>
+<td style="text-align:left;">
+Kimberly
+</td>
+<td style="text-align:left;">
+1561122
+</td>
+<td style="text-align:left;">
+08/30/2016
+</td>
+<td style="text-align:left;">
+Collaborative Research: Cognitive Mechanisms of Early Math Learning - Improving Outcomes by Harnessing Multiple Memory Representations
+</td>
+<td style="text-align:right;">
+480
+</td>
+<td style="text-align:right;">
+254004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Franchak
+</td>
+<td style="text-align:left;">
+John
+</td>
+<td style="text-align:left;">
+1941449
+</td>
+<td style="text-align:left;">
+07/21/2020
+</td>
+<td style="text-align:left;">
+Developmental cascades: How motor development alters everyday learning experiences
+</td>
+<td style="text-align:right;">
+1580
+</td>
+<td style="text-align:right;">
+631076
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gale
+</td>
+<td style="text-align:left;">
+Elaine
+</td>
+<td style="text-align:left;">
+1400810
+</td>
+<td style="text-align:left;">
+06/26/2014
+</td>
+<td style="text-align:left;">
+CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition
+</td>
+<td style="text-align:right;">
+1062
+</td>
+<td style="text-align:right;">
+120000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+0092452
+</td>
+<td style="text-align:left;">
+02/09/2001
+</td>
+<td style="text-align:left;">
+CAREER: The Development of Heading Perception in Infancy
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+397307
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+0092452
+</td>
+<td style="text-align:left;">
+02/09/2001
+</td>
+<td style="text-align:left;">
+CAREER: The Development of Heading Perception in Infancy
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+397307
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+1147440
+</td>
+<td style="text-align:left;">
+06/05/2012
+</td>
+<td style="text-align:left;">
+The Development and Dynamics of Cortical Motion Processing
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:right;">
+385000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Huenerfauth
+</td>
+<td style="text-align:left;">
+Matt
+</td>
+<td style="text-align:left;">
+1462280
+</td>
+<td style="text-align:left;">
+09/15/2014
+</td>
+<td style="text-align:left;">
+CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition
+</td>
+<td style="text-align:right;">
+1062
+</td>
+<td style="text-align:right;">
+537997
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Huenerfauth
+</td>
+<td style="text-align:left;">
+Matt
+</td>
+<td style="text-align:left;">
+1462280
+</td>
+<td style="text-align:left;">
+09/15/2014
+</td>
+<td style="text-align:left;">
+CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition
+</td>
+<td style="text-align:right;">
+1249
+</td>
+<td style="text-align:right;">
+537997
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karasik
+</td>
+<td style="text-align:left;">
+Lana
+</td>
+<td style="text-align:left;">
+1349044
+</td>
+<td style="text-align:left;">
+01/22/2014
+</td>
+<td style="text-align:left;">
+Effects Of Traditional Cradling Practices On Infants’ Physical, Motor, And Social Development
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+77355
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kosie
+</td>
+<td style="text-align:left;">
+Jessica
+</td>
+<td style="text-align:left;">
+2004983
+</td>
+<td style="text-align:left;">
+06/30/2020
+</td>
+<td style="text-align:left;">
+Neural and behavioral coordination in infant-caregiver communication across the socioeconomic spectrum
+</td>
+<td style="text-align:right;">
+1589
+</td>
+<td style="text-align:right;">
+69000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Liu
+</td>
+<td style="text-align:left;">
+Yanxi
+</td>
+<td style="text-align:left;">
+1248076
+</td>
+<td style="text-align:left;">
+09/09/2012
+</td>
+<td style="text-align:left;">
+INSPIRE: Symmetry Group-based Regularity Perception in Human and Computer Vision
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+800000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Liu
+</td>
+<td style="text-align:left;">
+Yanxi
+</td>
+<td style="text-align:left;">
+1248076
+</td>
+<td style="text-align:left;">
+09/09/2012
+</td>
+<td style="text-align:left;">
+INSPIRE: Symmetry Group-based Regularity Perception in Human and Computer Vision
+</td>
+<td style="text-align:right;">
+324
+</td>
+<td style="text-align:right;">
+800000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lobue
+</td>
+<td style="text-align:left;">
+Vanessa
+</td>
+<td style="text-align:left;">
+1247590
+</td>
+<td style="text-align:left;">
+05/22/2013
+</td>
+<td style="text-align:left;">
+Validation of the Child Affective Facial Expressions Set (CAFE)
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+284473
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lu
+</td>
+<td style="text-align:left;">
+Hongjing
+</td>
+<td style="text-align:left;">
+1655300
+</td>
+<td style="text-align:left;">
+04/05/2017
+</td>
+<td style="text-align:left;">
+Discovering Hierarchical Representations for Action Understanding
+</td>
+<td style="text-align:right;">
+1187
+</td>
+<td style="text-align:right;">
+555792
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Messinger
+</td>
+<td style="text-align:left;">
+Daniel
+</td>
+<td style="text-align:left;">
+1052736
+</td>
+<td style="text-align:left;">
+06/14/2011
+</td>
+<td style="text-align:left;">
+Collaborative Research: Communication, Perturbation, and Early Development
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+202002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Messinger
+</td>
+<td style="text-align:left;">
+Daniel
+</td>
+<td style="text-align:left;">
+1052736
+</td>
+<td style="text-align:left;">
+06/14/2011
+</td>
+<td style="text-align:left;">
+Collaborative Research: Communication, Perturbation, and Early Development
+</td>
+<td style="text-align:right;">
+1474
+</td>
+<td style="text-align:right;">
+202002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Messinger
+</td>
+<td style="text-align:left;">
+Daniel
+</td>
+<td style="text-align:left;">
+1620294
+</td>
+<td style="text-align:left;">
+08/12/2016
+</td>
+<td style="text-align:left;">
+IBSS-L: Continuous Measurement of Children’s Behavior and the Development of Social Dynamics
+</td>
+<td style="text-align:right;">
+987
+</td>
+<td style="text-align:right;">
+869999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Movellan
+</td>
+<td style="text-align:left;">
+Javier
+</td>
+<td style="text-align:left;">
+0808767
+</td>
+<td style="text-align:left;">
+08/26/2008
+</td>
+<td style="text-align:left;">
+INT2-Large: Collaborative Research: Developing Social Robots
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+2650000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oakes
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+0951580
+</td>
+<td style="text-align:left;">
+08/26/2010
+</td>
+<td style="text-align:left;">
+Experience and cognitive development in infancy
+</td>
+<td style="text-align:right;">
+1294
+</td>
+<td style="text-align:right;">
+305523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poeppel
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+2043717
+</td>
+<td style="text-align:left;">
+02/23/2021
+</td>
+<td style="text-align:left;">
+Audiomotor Speech Rhythms and Their Perceptual Consequences
+</td>
+<td style="text-align:right;">
+1398
+</td>
+<td style="text-align:right;">
+495472
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rhodes
+</td>
+<td style="text-align:left;">
+Marjorie
+</td>
+<td style="text-align:left;">
+1147543
+</td>
+<td style="text-align:left;">
+07/12/2012
+</td>
+<td style="text-align:left;">
+The role of within-category variability in the development of induction
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+337975
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1056805
+</td>
+<td style="text-align:left;">
+07/20/2011
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+545
+</td>
+<td style="text-align:right;">
+472086
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1056805
+</td>
+<td style="text-align:left;">
+07/20/2011
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+546
+</td>
+<td style="text-align:right;">
+472086
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1056805
+</td>
+<td style="text-align:left;">
+07/20/2011
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+1437
+</td>
+<td style="text-align:right;">
+472086
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1560810
+</td>
+<td style="text-align:left;">
+09/18/2015
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+546
+</td>
+<td style="text-align:right;">
+202503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1560810
+</td>
+<td style="text-align:left;">
+09/18/2015
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+608
+</td>
+<td style="text-align:right;">
+202503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1560810
+</td>
+<td style="text-align:left;">
+09/18/2015
+</td>
+<td style="text-align:left;">
+CAREER:Perceptual Narrowing and Cortical Development in Infancy
+</td>
+<td style="text-align:right;">
+1437
+</td>
+<td style="text-align:right;">
+202503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+Lisa
+</td>
+<td style="text-align:left;">
+1728133
+</td>
+<td style="text-align:left;">
+07/07/2017
+</td>
+<td style="text-align:left;">
+Reliable and Robust Infant Brain Responses During Face Learning
+</td>
+<td style="text-align:right;">
+1437
+</td>
+<td style="text-align:right;">
+516424
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Senier
+</td>
+<td style="text-align:left;">
+Laura
+</td>
+<td style="text-align:left;">
+1948790
+</td>
+<td style="text-align:left;">
+03/30/2020
+</td>
+<td style="text-align:left;">
+Water Unaffordability in the United States: Using Principles of Organizational Learning to Understand Municipal Capacity to Safeguard Water Access
+</td>
+<td style="text-align:right;">
+1550
+</td>
+<td style="text-align:right;">
+234794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sobel
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+1661068
+</td>
+<td style="text-align:left;">
+05/01/2017
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+817795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sobel
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+1661068
+</td>
+<td style="text-align:left;">
+05/01/2017
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+253
+</td>
+<td style="text-align:right;">
+817795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sobel
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+1661068
+</td>
+<td style="text-align:left;">
+05/01/2017
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+817795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tamis-Lemonda
+</td>
+<td style="text-align:left;">
+Catherine
+</td>
+<td style="text-align:left;">
+0721383
+</td>
+<td style="text-align:left;">
+08/07/2007
+</td>
+<td style="text-align:left;">
+IRADS: The Study of Culture, Social Settings, and Child Development across School Transitions
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2500000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tamis-Lemonda
+</td>
+<td style="text-align:left;">
+Catherine
+</td>
+<td style="text-align:left;">
+1761053
+</td>
+<td style="text-align:left;">
+08/22/2018
+</td>
+<td style="text-align:left;">
+Collaborative Research: Math Cognition In Toddlers From Latino and White Families: Contributions Of Home Experiences With Mothers and Fathers
+</td>
+<td style="text-align:right;">
+1241
+</td>
+<td style="text-align:right;">
+600000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tamis-Lemonda
+</td>
+<td style="text-align:left;">
+Catherine
+</td>
+<td style="text-align:left;">
+1761053
+</td>
+<td style="text-align:left;">
+08/22/2018
+</td>
+<td style="text-align:left;">
+Collaborative Research: Math Cognition In Toddlers From Latino and White Families: Contributions Of Home Experiences With Mothers and Fathers
+</td>
+<td style="text-align:right;">
+1403
+</td>
+<td style="text-align:right;">
+600000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tian
+</td>
+<td style="text-align:left;">
+Yingli
+</td>
+<td style="text-align:left;">
+1400802
+</td>
+<td style="text-align:left;">
+06/26/2014
+</td>
+<td style="text-align:left;">
+CHS: Medium: Collaborative Research: Immediate Feedback to Support Learning American Sign Language through Multisensory Recognition
+</td>
+<td style="text-align:right;">
+1062
+</td>
+<td style="text-align:right;">
+565918
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verderame
+</td>
+<td style="text-align:left;">
+Michael
+</td>
+<td style="text-align:left;">
+1255832
+</td>
+<td style="text-align:left;">
+08/12/2012
+</td>
+<td style="text-align:left;">
+Graduate Research Fellowship Program (GRFP)
+</td>
+<td style="text-align:right;">
+272
+</td>
+<td style="text-align:right;">
+11668917
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vigeant
+</td>
+<td style="text-align:left;">
+Michelle
+</td>
+<td style="text-align:left;">
+1302741
+</td>
+<td style="text-align:left;">
+01/25/2013
+</td>
+<td style="text-align:left;">
+CAREER: Importance of Late-Sound-Field Properties and Listener Envelopment to Room Acoustic Quality and Design
+</td>
+<td style="text-align:right;">
+1135
+</td>
+<td style="text-align:right;">
+460814
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Weisberg
+</td>
+<td style="text-align:left;">
+Deena
+</td>
+<td style="text-align:left;">
+1929935
+</td>
+<td style="text-align:left;">
+04/09/2019
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+482889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Weisberg
+</td>
+<td style="text-align:left;">
+Deena
+</td>
+<td style="text-align:left;">
+1929935
+</td>
+<td style="text-align:left;">
+04/09/2019
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+253
+</td>
+<td style="text-align:right;">
+482889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Weisberg
+</td>
+<td style="text-align:left;">
+Deena
+</td>
+<td style="text-align:left;">
+1929935
+</td>
+<td style="text-align:left;">
+04/09/2019
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:right;">
+482889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Weisberg
+</td>
+<td style="text-align:left;">
+Deena
+</td>
+<td style="text-align:left;">
+1929935
+</td>
+<td style="text-align:left;">
+04/09/2019
+</td>
+<td style="text-align:left;">
+Young children’s beliefs about causal systems: Learning about belief revision in the lab and in museums
+</td>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+482889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woodward
+</td>
+<td style="text-align:left;">
+Amanda
+</td>
+<td style="text-align:left;">
+1628300
+</td>
+<td style="text-align:left;">
+08/18/2016
+</td>
+<td style="text-align:left;">
+Collaborative Research: Action, Learning, and Social Cognition
+</td>
+<td style="text-align:right;">
+1495
+</td>
+<td style="text-align:right;">
+377342
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wyble
+</td>
+<td style="text-align:left;">
+Bradley
+</td>
+<td style="text-align:left;">
+1331073
+</td>
+<td style="text-align:left;">
+07/27/2013
+</td>
+<td style="text-align:left;">
+Integrating Spatial and Temporal Models of Visual Attention
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+354257
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="visualizations" class="section level3" number="2.0.2">
+<h3>
+<span class="header-section-number">2.0.2</span> Visualizations<a class="anchor" aria-label="anchor" href="#visualizations"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>award_amt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">fundsObligatedAmt</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">award_amt</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:nsf-award-histogram-all"></span>
+<img src="include/img/nsf-award-histogram-all-1.png" alt="Histogram of NSF awards for all Databrary volumes." width="672"><p class="caption">
+Figure 2.1: Histogram of NSF awards for all Databrary volumes.
+</p>
+</div>
+<p>There are <span class="math inline">\(n=\)</span> 62 Databrary volumes that list NSF as a funder.</p>
+<p>These represent <span class="math inline">\(n=\)</span> 38 unique NSF awards.</p>
+<p>Of these, we were able to extract data from the NSF API for <span class="math inline">\(n=\)</span> 36 NSF awards.</p>
+<p>The following volumes do not have matching NSF awards.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:600px; ">
+<div class="inline-table"><table class=" lightable-material" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vol_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+award
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+url
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+BCS-15233982
+</td>
+<td style="text-align:left;">
+<a href="https://databrary.org/volume/268" class="uri">https://databrary.org/volume/268</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:left;">
+NSF BCS-166106
+</td>
+<td style="text-align:left;">
+<a href="https://databrary.org/volume/269" class="uri">https://databrary.org/volume/269</a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>The NSF award IDs must be in error for these volumes.</p>
+<p>We can search the NSF database for the term ‘databrary’ to see if we can find the correct
+NSF award ID.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf_w_databrary</span> <span class="op">&lt;-</span> <span class="fu">get_nsf_data_for_keyword</span><span class="op">(</span><span class="st">"databrary"</span><span class="op">)</span></span></code></pre></div>
+<p>Curiously, the following projects mention “Databrary”:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf_w_databrary</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">piFirstName</span>, <span class="va">piLastName</span>, <span class="va">id</span>, <span class="va">title</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">piLastName</span>, <span class="va">piFirstName</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_material</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"600px"</span>, height <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:600px; ">
+<div class="inline-table"><table class=" lightable-material" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piFirstName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piLastName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+title
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+1238599
+</td>
+<td style="text-align:left;">
+Databrary: An open video-based data-sharing system for developmental science
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+1627993
+</td>
+<td style="text-align:left;">
+NSF/SBE-BSF: Neural patterns underlying the development of planning in action production and anticipation in action perception
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+Adolph
+</td>
+<td style="text-align:left;">
+1139702
+</td>
+<td style="text-align:left;">
+Data Coding, Analysis, Archiving, and Sharing for Open Collaboration: From OpenSHAPA to Open Data Sharing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Elizabeth
+</td>
+<td style="text-align:left;">
+Bonawitz
+</td>
+<td style="text-align:left;">
+1623486
+</td>
+<td style="text-align:left;">
+EAGER: MAKER: The origins of making: A Data Science Approach to Investigating Cognitive and Affective Basis of Learning through Constructing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+Gilmore
+</td>
+<td style="text-align:left;">
+2032713
+</td>
+<td style="text-align:left;">
+EAGER: Expanding public access to restricted research data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lana
+</td>
+<td style="text-align:left;">
+Karasik
+</td>
+<td style="text-align:left;">
+1528831
+</td>
+<td style="text-align:left;">
+RUI: An Investigation of Short and Long Term Effects of Cradling on Development
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Felice
+</td>
+<td style="text-align:left;">
+Levine
+</td>
+<td style="text-align:left;">
+1656866
+</td>
+<td style="text-align:left;">
+Workshop Proposal on Replication, Reproducibility, and the Use of Data Assets in Advancing the Frontiers of Science in Education Research–the Critical Role of Journals
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vanessa
+</td>
+<td style="text-align:left;">
+LoBue
+</td>
+<td style="text-align:left;">
+1247590
+</td>
+<td style="text-align:left;">
+Validation of the Child Affective Facial Expressions Set (CAFE)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+James
+</td>
+<td style="text-align:left;">
+Rehg
+</td>
+<td style="text-align:left;">
+1524565
+</td>
+<td style="text-align:left;">
+Comp Cog: Collaborative Research on the Development of Visual Object Recognition
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Linda
+</td>
+<td style="text-align:left;">
+Smith
+</td>
+<td style="text-align:left;">
+1523982
+</td>
+<td style="text-align:left;">
+Comp Cog: Collaborative Research on the Development of Visual Object Recognition
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>We can filter these based on the last names of the Databrary volume owners.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsf_w_databrary</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">piFirstName</span>, <span class="va">piLastName</span>, <span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">piLastName</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Smith"</span>, <span class="st">"Bonawitz"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_material</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"600px"</span>, height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span></span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:600px; ">
+<div class="inline-table"><table class=" lightable-material" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piFirstName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+piLastName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Linda
+</td>
+<td style="text-align:left;">
+Smith
+</td>
+<td style="text-align:left;">
+1523982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Elizabeth
+</td>
+<td style="text-align:left;">
+Bonawitz
+</td>
+<td style="text-align:left;">
+1623486
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>From this result, it looks like the correct NSF award IDS are <code>1523982</code> and possibly <code>1623486</code>.
+Databrary staff will contact the PIs.</p>
 
 </div>
 </div>
@@ -856,8 +2577,14 @@ url
 <li>
 <a class="nav-link" href="#volume-funders">Volume funders</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#setup">Setup</a></li>
-<li><a class="nav-link" href="#illustration-using-the-current-grant">Illustration using the current grant</a></li>
 <li><a class="nav-link" href="#databrary-volumes-that-mention-nsf">Databrary volumes that mention NSF</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#nsf-funding-data-on-these-projects">NSF funding data on these projects</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#illustration-using-the-current-grant">Illustration using the current grant</a></li>
+<li><a class="nav-link" href="#funding-information-from-shared-databrary-volumes"><span class="header-section-number">2.0.1</span> Funding information from shared Databrary volumes</a></li>
+<li><a class="nav-link" href="#visualizations"><span class="header-section-number">2.0.2</span> Visualizations</a></li>
 </ul>
 </li>
 </ul>
