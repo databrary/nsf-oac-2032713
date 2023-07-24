@@ -1,7 +1,5 @@
 fig:nsf-award-histogram-all
 databraryr-r-package
 nsf-funded-projects-on-databrary
-funding-information-from-shared-databrary-volumes
-visualizations
 demographic-data
 metadata-standardization

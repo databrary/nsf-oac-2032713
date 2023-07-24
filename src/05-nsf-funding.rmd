@@ -76,7 +76,7 @@ db_nsf |>
   dplyr::select(vol_id, award_id, url) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "400px")
+  kableExtra::scroll_box(width = "700px", height = "400px")
 ```
 
 ::: {.rmdnote}
@@ -102,7 +102,7 @@ nsf_2032713_df <- get_nsf_data_for_award_id(2032713)
 nsf_2032713_df
 ```
 
-### Funding information from shared Databrary volumes
+### Funding information from shared Databrary volumes {-}
 
 To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run
 
@@ -129,10 +129,10 @@ nsf |>
   dplyr::arrange(piLastName, award_id, vol_id) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "300px")
+  kableExtra::scroll_box(width = "700px", height = "300px")
 ```
 
-### Visualizations
+### Visualizations {-}
 
 ```{r nsf-award-histogram-all, fig.cap="Histogram of NSF awards for all Databrary volumes.", echo=TRUE}
 nsf |>
@@ -159,7 +159,7 @@ db_nsf |>
   dplyr::select(vol_id, award, url) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "200px")
+  kableExtra::scroll_box(width = "700px", height = "200px")
 ```
 
 The NSF award IDs must be in error for these volumes.
@@ -179,7 +179,7 @@ nsf_w_databrary |>
   dplyr::arrange(piLastName, piFirstName) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "400px")
+  kableExtra::scroll_box(width = "700px", height = "400px")
 ```
 
 We can filter these based on the last names of the Databrary volume owners.
@@ -191,8 +191,16 @@ nsf_w_databrary |>
   dplyr::arrange(id) |>
   knitr::kable(format = 'html') |>
   kableExtra::kable_material() |>
-  kableExtra::scroll_box(width = "600px", height = "200px")
+  kableExtra::scroll_box(width = "700px", height = "200px")
 ```
 
 From this result, it looks like the correct NSF award IDS are `1523982` and possibly `1623486`.
 Databrary staff will contact the PIs.
+
+::: {.rmdnote}
+
+Note that this workflow helps evaluate the quality of the data and metadata stored on Databrary.
+
+We are considering incorporating these functions into the `databraryr` package in a future release.
+
+:::
