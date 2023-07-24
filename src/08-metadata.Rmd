@@ -1,0 +1,5 @@
+# Metadata standardization
+
+This page describes and discusses how Databrary's data and metadata might be made more compliant with existing
+data schema.
+
