@@ -1,0 +1,21 @@
+# Resources
+
+This page describes how the site and its associated data were built.
+
+## Framework
+
+The site was built in R Markdown and rendered to HTML using the `bookdown` package.
+
+Source code is located in `src/`.
+The rendered HTML website is in `docs/`.
+
+We use GitHub's pages feature to serve the site.
+
+## Dependencies
+
+- Databrary analytics pages
+- `databraryr` package
+- <https://github.com/databrary/metadata>
+
+## References
+

@@ -1,0 +1,40 @@
+# Researcher Feedback
+
+This page describes the meeting held on Friday, August 11, 2023 at Penn State that followed an [Open Science Bootcamp](https://penn-state-open-science/bootcamp-2023/).
+
+The meeting sought feedback from the community on the topic:
+
+"Making shared data about human participants maximally useful for secondary research"
+
+## Participants
+
+- Rick Gilmore, Penn State, Department of Psychology
+- Briana Wham, Penn State, University Libraries
+- Kevin Clair, Penn State, University Libraries
+- Jeff Spies, Principal, 221b
+- Jenae Neiderhiser, Penn State, Department of Psychology
+- Doug Teti, Penn State, Department of Human Development and Family Studies
+<!-- - Nicole Lazar, Penn State, Department of Statistics -->
+<!-- - Kevin McManus, Penn State, Department of Applied Linguistics -->
+<!-- - Bruce Desmarais, Penn State, Department of Applied Linguistics -->
+<!-- - Jennifer Valcin, Penn State, University Libraries -->
+
+## Themes
+
+1. A vision for the future
+2. What's possible today
+
+## A vision for the future...
+
+## Questions
+
+1. What variable(s) would you want to have available for data you plan to reuse?
+    - People
+    - Tasks
+    - Measures
+    - Settings
+2. Are there standard rubrics or schemas for these variables?
+
+## Findings
+
+

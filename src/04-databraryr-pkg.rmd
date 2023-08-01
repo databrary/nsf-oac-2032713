@@ -14,7 +14,7 @@ They expect to submit the package for review to the Comprehensive R Archive Netw
 
 ## Current (development) package {-}
 
-The in-progress R package can be viewed at <https://github.com/databrary/databraryr>.
+The in-progress R package can be viewed at <https://github.com/databrary/databraryr/>.
 
 A full website describing all of the commands can be found at <https://databrary.github.io/databraryr/>.
 
