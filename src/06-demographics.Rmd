@@ -5,14 +5,13 @@ This page summarizes the demographic data currently reported by shared Databrary
 ## Databrary analytics {-}
 
 Databrary maintains a website with information about the system's users and data.
-
 The site can be found at:
 
-<https://databrary.github.io/analytics/>.
+<https://databrary.github.io/analytics>.
 
 The data reported here are updated regularly, typically on a weekly or bi-weekly basis.
 
-Data summarized here reflect the state of the Databrary system on 2023-08-01.
+Data summarized here reflect the state of the Databrary system on 2023-08-31.
 
 ## Release levels {-}
 
@@ -136,47 +135,21 @@ knitr::include_url("https://databrary.github.io/analytics/participant-demographi
 
 #### Language {-}
 
-https://databrary.github.io/analytics/participant-demographics.html#n-participants-3
+Some $N=111$ volumes report participant_language.
+Here is a table of the reported values:
 
-### Pilot {-}
-
-```{r, fig.cap="Variables related to a participant or session's 'pilot' status supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-pilot.png")
-```
-
-### Exclusion {-}
-
-```{r, fig.cap="Variables related to a participant or session's status as 'included' or 'excluded' from a final dataset supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-exclusion.png")
-```
-
-### Task {-}
-
-```{r, fig.cap="Variable(s) related to the task or tasks associated with a participant or session supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-task.png")
-```
-
-### Condition {-}
-
-```{r, fig.cap="Variable(s) related to an experimental condition associated with a participant or session supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-condition.png")
-```
-
-### Group {-}
-
-```{r, fig.cap="Variable(s) related to some grouping condition associated with a participant or session supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-group.png")
-```
-
-### Context {-}
-
-```{r, fig.cap="Variable(s) related to the context associated with a participant or session supported by Databrary's spreadsheet"}
-knitr::include_graphics("include/img/databrary-ss-context.png")
+```{r, fig.cap="Summary of country data from shared Databrary volumes; source: https://databrary.github.io/analytics/participant-demographics.html#country"}
+knitr::include_url("https://databrary.github.io/analytics/participant-demographics.html#country")
 ```
 
 #### Country {-}
 
 Only $n=2$ shared volumes report country.
+Here is a table summarizing that data:
+
+```{r, fig.cap="Summary of country data from shared Databrary volumes; source: https://databrary.github.io/analytics/participant-demographics.html#country"}
+knitr::include_url("https://databrary.github.io/analytics/participant-demographics.html#country")
+```
 
 #### State {-}
 
@@ -185,17 +158,43 @@ The analytics report does not currently report data about the extent to which `s
 However, the [Play & Learning Across a Year (PLAY) Project](https://play-project.org) has collected and will eventually report the U.S. States in which data was collected.
 This project is also exploring reporting more micro-level geographic data (e.g., county), and where participant (and IRB) permission exists, [Census Block Group](https://en.wikipedia.org/wiki/Census_block_group) level data.
 
-#### Setting {-}
+#### Other variables {-}
 
-The analytics report does not currently report data about the extent to which `setting` is reported.
+The analytics report does not currently report data about the extent to which user defined variables like pilot status, exclusion criteria, task names, condition names, group names, context factors, or setting are reported in the Databrary spreadsheet.
+Most of these user-reported variables require additional metadata to be useful to others.
+Future work should focus on standardizing how that metadata is reported and incorporated into Databrary.
+
+```{r, fig.cap="Variables related to a participant or session's 'pilot' status supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-pilot.png")
+```
+
+```{r, fig.cap="Variables related to a participant or session's status as 'included' or 'excluded' from a final dataset supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-exclusion.png")
+```
+
+```{r, fig.cap="Variable(s) related to the task or tasks associated with a participant or session supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-task.png")
+```
+
+```{r, fig.cap="Variable(s) related to an experimental condition associated with a participant or session supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-condition.png")
+```
+
+```{r, fig.cap="Variable(s) related to some grouping condition associated with a participant or session supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-group.png")
+```
+
+```{r, fig.cap="Variable(s) related to the context associated with a participant or session supported by Databrary's spreadsheet"}
+knitr::include_graphics("include/img/databrary-ss-context.png")
+```
 
 ## Tags and Keywords {-}
 
-Databrary also supports attaching free-form tags and keywords to single participant datasets or entire volumes.
+Databrary supports attaching free-form tags and keywords to single participant datasets or entire volumes.
 
 There are $n=410$ unique tags and keywords.
 Here is a word cloud that depicts them:
 
-```{r, fig.cap = "Most common tags and keywords across shared Databrary volumes; source: https://databrary.github.io/analytics/tags-and-keywords.html"}
+```{r, fig.cap = "Most common tags and keywords across shared Databrary volumes; source: https://databrary.github.io/analytics/tags-and-keywords.html", out.width="75%"}
 knitr::include_graphics("https://databrary.github.io/analytics/include/img/unnamed-chunk-26-1.png")
 ```

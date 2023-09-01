@@ -11,30 +11,17 @@ The meeting sought feedback from the community on the topic:
 - Rick Gilmore, Penn State, Department of Psychology
 - Briana Wham, Penn State, University Libraries
 - Kevin Clair, Penn State, University Libraries
-- Jeff Spies, Principal, 221b
+- Jeff Spies, Principal, 221b (via Zoom)
 - Jenae Neiderhiser, Penn State, Department of Psychology
 - Doug Teti, Penn State, Department of Human Development and Family Studies
-<!-- - Nicole Lazar, Penn State, Department of Statistics -->
-<!-- - Kevin McManus, Penn State, Department of Applied Linguistics -->
-<!-- - Bruce Desmarais, Penn State, Department of Applied Linguistics -->
-<!-- - Jennifer Valcin, Penn State, University Libraries -->
+- Nicole Lazar, Penn State, Department of Statistics
+- C. Lee Giles, Penn State, Professor of Information Science and Technology
+- Deborah Ehrenthal, Professor of Biobehavioral Health, Director, Socail Science Research Institute
+- Alaina Pearce, Assistant Research Professor, Department of Nutritional Sciences
 
 ## Themes
 
-1. A vision for the future
-2. What's possible today
-
-## A vision for the future...
-
-## Questions
-
-1. What variable(s) would you want to have available for data you plan to reuse?
-    - People
-    - Tasks
-    - Measures
-    - Settings
-2. Are there standard rubrics or schemas for these variables?
+Several invitees with specific data and metadata perspectives were unable to attend, the team shifted the focus to a discussion of what current Databrary offers researchers in terms of restricted access data storage and sharing and the systematic reporting of some core demographic data elements.
 
 ## Findings
-
 

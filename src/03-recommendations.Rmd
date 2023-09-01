@@ -1,0 +1,70 @@
+---
+title: "Recommendations"
+output: html_document
+---
+
+# Recommendations
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview {-}
+
+The project team had hoped that new funding to update and rewrite the Databrary 1.0 system would emerge during the project period so that specific changes to the system's user interface could be fully implemented.
+That did not occur.
+
+However, the team created working testbeds to evaluate a set of ideas that we hope will inform the design and development process of Databrary 2.0 when funds to support that effort have been secured.
+
+This page summarizes some of those recommendations.
+
+## Separate views of the same underlying data {-}
+
+## Extend use of icons to indicate access levels {-}
+
+Databrary currently implements a standard set of access levels that are indicated by a consistent vocabulary and set of icons that are called the Databrary Release Levels.
+
+```{r, fig.cap="Databrary Release Levels from https://databrary.org/support/irb/release-levels.html"}
+knitr::include_url("https://databrary.org/support/irb/release-levels.html")
+```
+
+These release levels fit the needs of researchers who carry out research with human participants where the data are not especially sensitive.
+Should Databrary expand to meet the needs of other research communities, such as those where invasive video recordings of non-human animal subjects are collected, or videos gathered in clinical contexts, the release and access levels might need to be modified.
+Even in these cases, we think that there are virtues to adopting standard terminology and graphic icons to indicate the levels of release.
+Moreover, we think that keeping the *number* of release levels is wise to reduce the possibility of mislabeling data and to reduce confusion among potential data re-users.
+
+## Explain when data is missing {-}
+
+We believe that Databrary 2.0 should consider implementing some additional UI elements that provide clarity to users about what additional data might be available under different data access agreement terms.
+
+For example, if a user has supplied a thumbnail image for a volume, that (possibly identifiable) image is shown to users who are logged in and have full access (left), but not to the general public (right).
+
+::: {.rmdnote}
+
+Note that we have altered the "full" views below because this site is accessible to the public.
+
+:::
+
+```{r, out.width="40%", fig.cap="Two views of the same asset."}
+knitr::include_graphics("include/img/thumbnail-full.png")
+knitr::include_graphics("include/img/thumbnail-limited.png")
+```
+
+There is no indication that a thumbnail is available, just masked from view.
+Nor is there an alert to the user that they should log in, if they have an account.
+
+Similarly, if a user has supplied image or video highlights, the possibly identifiable images or videos are shown to authorized and logged-in users, but not to the public.
+
+```{r, out.width="40%", fig.cap="Two views of the same asset."}
+knitr::include_graphics("include/img/highlights-full.png")
+knitr::include_graphics("include/img/highlights-limited.png")
+```
+
+And in the participant-level spreadsheet data, exact birth and test dates are shown (if participants have given sharing permission) to authorized and logged-in users, but not to the general public.
+
+```{r}
+knitr::include_graphics("include/img/spreadsheet-full.png")
+knitr::include_graphics("include/img/spreadsheet-limited.png")
+```
+
+We recommend that Databrary 2.0 adopt different shading for full vs. restricted views and mouse-over tooltips to indicate where there is more data to be shown than is currently being shown.

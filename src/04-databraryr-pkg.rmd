@@ -6,11 +6,13 @@ This page summarizes information about the R package the team developed and enha
 
 Rick Gilmore began development on an R package to use the Databrary PI several years ago.
 The original package was called `databraryapi`.
-Some of the work was supported by the Play & Learning Across a Year (PLAY) project award.
+Some of the work was supported by the Play & Learning Across a Year (PLAY) project award supported by NIH under R01HD094830.
 
 In summer of 2023, Gilmore moved the code base to the Databrary GitHub organization and renamed the package `databraryr` in accord with R package naming conventions.
 Gilmore and Spies have been working to make the code base more robust and standards compliant.
-They expect to submit the package for review to the Comprehensive R Archive Network (CRAN) by August 31, 2023.
+They expect to submit the package for review to the Comprehensive R Archive Network (CRAN) by September 14, 2023.
+
+The package underlies much of the work PI Gilmore has done to make Databrary's holdings maximally available to the broadest possible community, especially via the Databrary analytics site (<https://databrary.github.io/analytics>).
 
 ## Current (development) package {-}
 
@@ -28,5 +30,3 @@ In the meantime, any user may download and use the development version, as follo
 
 We are developing a roadmap for the package.
 A major feature for a future release will be commands that enable scripted uploading of data and materials to Databrary.
-
-

@@ -9,8 +9,8 @@ Rick Gilmore and Andrea Seisler developed code to generate a series of reports
 about Databrary's users, assets, and data.
 
 In summer 2023, that code was migrated to the Databrary organization on GitHub.
-The code base for these reports can be found at <https://github.com/databrary/analytics/>.
-The latest analytics report can be found at <https://databrary.github.io/analytics>.
+The code base for these reports can be found at <https://github.com/databrary/analytics>.
+The latest fully rendered analytics report can be found at <https://databrary.github.io/analytics>.
 
 **Note**: Databrary's API does not permit access to datasets or volumes that have yet to be shared by the volume owner.
 This means that the data we report here are an underestimate of the total number of projects and datasets that have actually received NSF funding.
@@ -21,7 +21,7 @@ Databrary permits users to list funders associated with a dataset.
 The funding information across the site is updated regularly.
 The latest report can be found at <https://databrary.github.io/analytics/funders.html>.
 
-As of 2023-07-24, NSF was listed as a funder by the largest number of volumes on Databrary.
+As of 2023-08-30, NSF was listed as a funder by the largest number of volumes on Databrary.
 
 Here, we regenerate the data.
 
@@ -37,16 +37,18 @@ source("R/functions.R")
 
 To query Databrary for the volumes that mention an NSF award, we run the following.
 
-As of 2023-07-24, volume 1627 was the largest volume index.
+As of 2023-09-01, volume 1635 was the largest volume index.
 So, we can query Databrary volume-by-volume, to collect data about volumes that list NSF as a funder, as follows:
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, echo=TRUE}
 db_w_nsf <-
-  purrr::map(1:1627,
+  purrr::map(1:1635,
              get_vol_awards,
              funder_str = "NSF",
              .progress = "Databrary vols w/ NSF:") |> purrr::list_rbind() |>
-  add_clean_nsf_award_id()
+  add_clean_nsf_award_id() |>
+
+readr::write_csv(db_w_nsf, "csv/databrary-vols-w-nsf-funding-all.csv")
 ```
 
 The above uses the `get_vol_awards()` function and the `funder_str` parameter to select award information that lists NSF. Then, the NSF award IDs are cleaned to match the NSF format with `add_clean_nsf_award_id()`.
@@ -86,7 +88,7 @@ Note that we have added a URL that links directly to the shared volume on Databr
 :::
 
 There are $n=$ `r length(unique(db_nsf$vol_id))` unique shared Databrary volumes that list NSF as a funder, and $n=$ `r length(unique(db_nsf$award_id))` unique NSF awards.
-Some NSF awards have resulted in multiple shared Databrary volumes.
+This is because some NSF awards have resulted in multiple shared Databrary volumes.
 
 ## NSF funding data on these projects {-}
 
@@ -107,7 +109,7 @@ nsf_2032713_df
 To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run
 
 ```{r, eval=FALSE, echo=TRUE}
-summarize_mult_vol_nsf_awards(1:1627, vb = TRUE)
+summarize_mult_vol_nsf_awards(1:1635, vb = TRUE)
 ```
 
 This takes several minutes, so for this report, we will import a previously saved file with these data.
@@ -141,8 +143,6 @@ nsf |>
   ggplot2::aes(award_amt) +
   ggplot2::geom_histogram(bins=10)
 ```
-
-There are $n=$ `r dim(db_nsf)[1]` Databrary volumes that list NSF as a funder.
 
 These represent $n=$ `r db_nsf$award_id |> na.omit() |> unique() |> length()` unique NSF awards.
 
@@ -195,7 +195,7 @@ nsf_w_databrary |>
 ```
 
 From this result, it looks like the correct NSF award IDS are `1523982` and possibly `1623486`.
-Databrary staff will contact the PIs.
+Databrary staff will contact the PIs to ascertain if this is the case and correct records, as appropriate.
 
 ::: {.rmdnote}
 

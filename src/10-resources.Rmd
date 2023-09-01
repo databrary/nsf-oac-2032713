@@ -13,9 +13,7 @@ We use GitHub's pages feature to serve the site.
 
 ## Dependencies
 
-- Databrary analytics pages
-- `databraryr` package
+- Databrary analytics site: <https://databrary.github.io/analytics>.
+- `databraryr` package: <https://databrary.github.io/databraryr>
 - <https://github.com/databrary/metadata>
-
-## References
 
