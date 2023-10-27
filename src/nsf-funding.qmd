@@ -2,6 +2,7 @@
 
 This page summarizes data about NSF-funded projects that have used Databrary
 to store and share data.
+This is one component of making research data stored on the site more accessible.
 
 ## Background  {-}
 
@@ -29,6 +30,15 @@ Here, we regenerate the data.
 
 Most of the work is done via functions listed in `R/functions.R`.
 
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      fig.align = "center",
+                      fig.path = "include/img/")
+library(tidyverse)
+library(bslib)
+library(htmltools)
+```
+
 ```{r echo=TRUE}
 source("R/functions.R")
 ```
@@ -53,7 +63,7 @@ readr::write_csv(db_w_nsf, "csv/databrary-vols-w-nsf-funding-all.csv")
 
 The above uses the `get_vol_awards()` function and the `funder_str` parameter to select award information that lists NSF. Then, the NSF award IDs are cleaned to match the NSF format with `add_clean_nsf_award_id()`.
 
-::: {.rmdnote}
+::: {.callout-note}
 
 The funding award IDs must be cleaned because the current Databrary system does not validate their formats. 
 The funding award information is a free text field.
@@ -81,13 +91,14 @@ db_nsf |>
   kableExtra::scroll_box(width = "700px", height = "400px")
 ```
 
-::: {.rmdnote}
+
+::: {.callout-note}
 
 Note that we have added a URL that links directly to the shared volume on Databrary.
 
 :::
 
-There are $n=$ `r length(unique(db_nsf$vol_id))` unique shared Databrary volumes that list NSF as a funder, and $n=$ `r length(unique(db_nsf$award_id))` unique NSF awards.
+There are $n=$ `r length(unique(db_nsf$vol_id))` unique *shared* Databrary volumes that list NSF as a funder, and $n=$ `r length(unique(db_nsf$award_id))` unique NSF awards.
 This is because some NSF awards have resulted in multiple shared Databrary volumes.
 
 ## NSF funding data on these projects {-}
@@ -106,26 +117,27 @@ nsf_2032713_df
 
 ### Funding information from shared Databrary volumes {-}
 
-To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run
+To re-generate a data frame with the Databrary volumes for which we are able to extract more details about the NSF funding from the NSF itself, we run the following:
 
 ```{r, eval=FALSE, echo=TRUE}
 summarize_mult_vol_nsf_awards(1:1635, vb = TRUE)
 ```
 
-This takes several minutes, so for this report, we will import a previously saved file with these data.
+This takes several minutes, so for this report, we import a previously saved file with these data.
 
 ```{r import-saved, echo=TRUE}
-nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", show_col_types = FALSE)
+nsf <- readr::read_csv("csv/databrary-nsf-funding-details-all.csv", 
+                       show_col_types = FALSE)
 ```
 
-Now, we can begin to visualize this, as well:
+Now, we can begin to visualize these data as follows:
 
 ```{r show-table-nsf-info, echo=TRUE}
 nsf <- nsf |>
    dplyr::filter(!is.na(piLastName), !is.na(piFirstName), !is.na(award_id))
  
 nsf |>
-  dplyr::select(piLastName, piFirstName, award_id, date, title, vol_id, fundsObligatedAmt) |>
+  dplyr::select(piLastName, piFirstName, award_id, date, vol_id) |>
   dplyr::mutate(piLastName = stringr::str_to_title(piLastName),
                 piFirstName = stringr::str_to_title(piFirstName)) |>
   dplyr::arrange(piLastName, award_id, vol_id) |>
@@ -136,7 +148,7 @@ nsf |>
 
 ### Visualizations {-}
 
-```{r nsf-award-histogram-all, fig.cap="Histogram of NSF awards for all Databrary volumes.", echo=TRUE}
+```{r fig-nsf-award-histogram-all, fig.cap="Histogram of NSF awards for all Databrary volumes.", echo=TRUE}
 nsf |>
   dplyr::mutate(award_amt = as.numeric(fundsObligatedAmt)) |>
   ggplot2::ggplot() +
@@ -171,7 +183,7 @@ NSF award ID.
 nsf_w_databrary <- get_nsf_data_for_keyword("databrary")
 ```
 
-Curiously, the following projects mention "Databrary":
+The following NSF-funded projects mention "Databrary" according to the NSF API:
 
 ```{r, echo=TRUE}
 nsf_w_databrary |>
@@ -194,10 +206,10 @@ nsf_w_databrary |>
   kableExtra::scroll_box(width = "700px", height = "200px")
 ```
 
-From this result, it looks like the correct NSF award IDS are `1523982` and possibly `1623486`.
-Databrary staff will contact the PIs to ascertain if this is the case and correct records, as appropriate.
+From this result, it looks like the correct NSF award IDs for the projects on Databrary are `1523982` and possibly `1623486`.
+Databrary staff will contact the PIs to ascertain if this is the case and correct Databrary's records, as appropriate.
 
-::: {.rmdnote}
+::: {.callout-note}
 
 Note that this workflow helps evaluate the quality of the data and metadata stored on Databrary.
 

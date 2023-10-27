@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EAGER: Expanding public access to restricted research data - 6&nbsp; Metadata standardization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./demographics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="include/bib/apa.csl">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metadata.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Metadata standardization</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">EAGER: Expanding public access to restricted research data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/databrary/nsf-oac-2032713/tree/main/src/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./community-feedback.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Researcher Feedback</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./databraryr-pkg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><code>databraryr</code> R package</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nsf-funding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">NSF-funded projects on Databrary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./demographics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Demographic data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metadata.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Metadata standardization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#databrary-2.0-good-practices-and-future-directions-for-fair-metadata" id="toc-databrary-2.0-good-practices-and-future-directions-for-fair-metadata" class="nav-link active" data-scroll-target="#databrary-2.0-good-practices-and-future-directions-for-fair-metadata">Databrary 2.0: Good Practices and Future Directions for FAIR Metadata</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#databrary-and-the-fair-principles" id="toc-databrary-and-the-fair-principles" class="nav-link" data-scroll-target="#databrary-and-the-fair-principles">Databrary and the FAIR Principles</a></li>
+  <li><a href="#appendix-json-ld-examples" id="toc-appendix-json-ld-examples" class="nav-link" data-scroll-target="#appendix-json-ld-examples">Appendix: JSON-LD examples</a></li>
+  </ul></li>
+  <li><a href="#databrary-2.0-university-libraries-meta-data-recommendations" id="toc-databrary-2.0-university-libraries-meta-data-recommendations" class="nav-link" data-scroll-target="#databrary-2.0-university-libraries-meta-data-recommendations">Databrary 2.0: University Libraries Meta Data Recommendations</a>
+  <ul class="collapse">
+  <li><a href="#project-scope" id="toc-project-scope" class="nav-link" data-scroll-target="#project-scope">Project scope</a></li>
+  <li><a href="#demographic-data-review" id="toc-demographic-data-review" class="nav-link" data-scroll-target="#demographic-data-review">Demographic data review</a></li>
+  <li><a href="#recommendations-on-encoding-data" id="toc-recommendations-on-encoding-data" class="nav-link" data-scroll-target="#recommendations-on-encoding-data">Recommendations on encoding data</a></li>
+  <li><a href="#recommendations-on-documentation" id="toc-recommendations-on-documentation" class="nav-link" data-scroll-target="#recommendations-on-documentation">Recommendations on documentation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Metadata standardization</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This page describes and discusses how Databrary’s data and metadata might be made more compliant with existing data schema and standards.</p>
+<p>Our metadata expert, Kevin Clair, produced two reports about his findings and recommendations about standardizing Databrary’s data and metadata.</p>
+<section id="databrary-2.0-good-practices-and-future-directions-for-fair-metadata" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="databrary-2.0-good-practices-and-future-directions-for-fair-metadata">Databrary 2.0: Good Practices and Future Directions for FAIR Metadata</h2>
+<section id="background" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="background">Background</h3>
+<p>Databrary (<a href="https://databrary.org/">https://databrary.org</a>) is a restricted-access data library for storing, streaming, and sharing video and audio recordings collected as research data or documentation. Its primary focus is the collection of data in behavioral, social, educational, and developmental science. The Databrary 2.0 project, supported by the National Science Foundation via OAS-2032713, builds on the existing Databrary platform to ensure its datasets, and the metadata that describes them, complies with FAIR (findable, accessible, interoperable, reusable) standards through implementation of open metadata schema and vocabularies, documentation of these guidelines, and outreach to Databrary stakeholders.</p>
+<p>As part of the NSF study, the University Libraries consulted with the Databrary project team on metadata curation and publishing standards for research data. Particular attention was paid to the demographic data describing datasets and their constituent files in the current Databrary infrastructure, aligning each data property with one or more open schema in the domain of that property. This report presents the results of this consultation. It also introduces further practices that the Databrary project may adopt in order to comply with the FAIR Principles <span class="citation" data-cites="Wilkinson2016-qr">(<a href="references.html#ref-Wilkinson2016-qr" role="doc-biblioref">Wilkinson et al. 2016</a>)</span>.</p>
+</section>
+<section id="databrary-and-the-fair-principles" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="databrary-and-the-fair-principles">Databrary and the FAIR Principles</h3>
+<section id="findability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="findability">Findability</h4>
+<p>The FAIR principles for findability are:</p>
+<ul>
+<li><p>Metadata are assigned a globally unique and persistent identifier</p></li>
+<li><p>Data are described with rich metadata</p></li>
+<li><p>Metadata clearly and explicitly include the identifier of the data they describe</p></li>
+<li><p>Metadata are registered or indexed in a searchable resource</p></li>
+</ul>
+<p>Datasets in Databrary are assigned persistent identifiers; the aggregations of metadata that describe these datasets should be provided distinct persistent identifiers, so that they may be referenced separately. The metadata describing resources in Databrary is already quite rich, but more work may be done to ensure its fitness for the purposes for which it is used (e.g.&nbsp;self-curation and management of deposits, discovery of data by outside researchers). The identification and definition of core and extended sets of data properties that best facilitate finding and reusing Databrary datasets should be the subject of future user research studies. Finally, metadata describing Databrary datasets should be aggregated in such a way that they may be made available for discovery in searchable resources. This includes Databrary itself, as well as any third-party data repositories for which Databrary makes itself available for aggregation. <a href="https://www.fairdatapoint.org/">The FAIR Data Point project</a> points a way forward for this.</p>
+</section>
+<section id="accessibility" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="accessibility">Accessibility</h4>
+<p>The FAIR principles for accessibility are:</p>
+<ul>
+<li><p>Metadata are retrievable by their identifier using a standardized communications protocol</p>
+<ul>
+<li><p>The protocol is open, free, and universally implementable</p></li>
+<li><p>The protocol allows for an authentication and authorization procedure, where necessary</p></li>
+</ul></li>
+<li><p>Metadata are accessible even when the data are no longer available</p></li>
+</ul>
+<p>Databrary is in the process of making its metadata available through <a href="https://github.com/databrary/databraryr">an R package</a> and through an open API. Determining the data structures for making metadata available through the API is one of the primary deliverables of the Libraries’ ongoing collaborations with the Databrary project. Databrary is well on its way to aligning with the FAIR accessibility principles, although in our work we identified two issues to address in future work. First, the categories of access restriction that may be placed on data vary even among individual users or within a single dataset. This has implications for how accessible data may be for a particular user, or for the degree to which a metadata aggregation may be visible to a user who requests it using an API. Databrary will need to keep an internal record of these permissions; this record will itself need to be published in accordance with the FAIR Principles, with appropriate identifiers and version control that can be referenced in a metadata aggregation. Second, datasets that are no longer available in Databrary for any reason (withdrawn from the repository; made unavailable to a user due to changes in circumstances) will still need to have metadata for them made available. Rationale for the unavailability of this data will need to be published in a standardized way.</p>
+</section>
+<section id="interoperability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interoperability">Interoperability</h4>
+<p>The FAIR principles for interoperability are:</p>
+<ul>
+<li><p>Metadata use a formal, accessible, shared, and broadly applicable language for knowledge representation.</p></li>
+<li><p>Metadata use vocabularies that follow FAIR principles.</p></li>
+<li><p>Metadata include qualified references to other metadata.</p></li>
+</ul>
+<p>Databrary is in the process of establishing metadata encoding standards for the various places where metadata aggregations describing its datasets may be found, including the Databrary website, the API, and the Databrary R package. Wherever possible, Databrary should refer to property value sets that are published as open data with persistent, referenceable URIs to ensure data interoperability. For publishing data through a publicly-accessible Web frontend, JSON-LD (or JSON for Linking Data) is a widely-used standard. JSON-LD uses broadly applicable open vocabularies such as Schema.org to publish metadata property/value pairs in a way that search engines can recognize and integrate into their indexes. Examples of metadata aggregations encoded as JSON-LD for the Web may be found in this report and in the related Metadata Recommendations document.</p>
+<p>In some cases this may come into conflict with the ways in which researchers and PIs have chosen to collect and document their own data. For these situations Databrary should have a statement or memorandum of understanding with depositors allowing for some post-deposit curation of metadata that prserves the provenance and original order of the data while allowing for interoperability and shared understanding of data properties, according to the FAIR standards (see the “Reusability” section below).</p>
+</section>
+<section id="reusability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="reusability">Reusability</h4>
+<p>The FAIR principles for reusability are:</p>
+<ul>
+<li><p>Metadata are richly described with a plurality of accurate and relevant attributes.</p>
+<ul>
+<li><p>Metadata are released with a clear and accessible data usage license.</p></li>
+<li><p>Metadata are associated with detailed provenance.</p></li>
+<li><p>Metadata meet domain-relevant community standards.</p></li>
+</ul></li>
+</ul>
+<p>The principles regarding rich description using clearly-defined and relevant data properties are echoed in many of the other FAIR principles. The application of reusability principles, more so than the other three categories, follow from researched and documented use cases for metadata and data collected from the Databrary community, and are difficult to glean from metadata specialization alone. Data usage licenses should be implemented in Databrary that meet the needs for both data sharing among researchers and the protection of privacy for research subjects. Data provenance, both in the deposit of metadata and in its ongoing curation (e.g.&nbsp;the enhancement of metadata to conform with open vocabularies for attributes such as demographic data) should be documented and made available to aid in the understanding of datasets. Finally, direct observation of and outreach to researchers, in particular their needs for sharing data and re-using the shared data of others, should be considered in developing description practices.</p>
+</section>
+</section>
+<section id="appendix-json-ld-examples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="appendix-json-ld-examples">Appendix: JSON-LD examples</h3>
+<section id="from-databrary" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="from-databrary">From Databrary</h4>
+<p>The below is a partial worked example of how a Databrary volume may be expressed with JSON-LD. In cases where Schema properties do not exist, or only exist in partial forms (e.g.&nbsp;in the way that Schema handles race and ethnicity data for individuals), Databrary predicates have been provided. The referenced volume is <span class="citation" data-cites="Karasik2014-lx">(<a href="references.html#ref-Karasik2014-lx" role="doc-biblioref">Karasik, Tamis-Lemonda, and Adolph 2014</a>)</span>.</p>
+<pre><code>{
+  "@context": {
+    "schema": "https://schema.org/",
+    "databrary": "https://databrary.org/"
+  },
+  "@id": "http://doi.org/10.17910/b7.11",
+  "@type": "schema:Dataset",
+  "schema:name": "The Ties That Bind: Cradling in Tajikistan",
+  "schema:description": "A traditional childrearing practice—“gahvora” cradling—in Tajikistan and other parts of Central Asia purportedly restricts movement of infants’ body and limbs. However, the practice has been documented only informally in anecdotal reports. Thus, this study had two research questions: (1) To what extent are infants’ movements restricted in the gahvora? (2) How is time in the gahvora distributed over a 24-hour day in infants from 1–24 months of age? To answer these questions, we video-recorded 146 mothers cradling their infants and interviewed them using 24-hour time diaries to determine the distribution of time infants spent in the gahvora within a day and across age. Infants’ movements were indeed severely restricted. Although mothers showed striking uniformity in how they restricted infants’ movements, they showed large individual differences in amount and distribution of daily use. Machine learning algorithms yielded three patterns of use: day and nighttime cradling, mostly nighttime cradling, and mostly daytime cradling, suggesting multiple functions of the cradling practice. Across age, time in the gahvora decreased, yet 20% of 12- to 24-month-olds spent more than 15 hours bound in the gahvora. We discuss the challenges and benefits of cultural research, and how the discovery of new phenomena may defy Western assumptions about childrearing and development. Future work will determine whether the extent and timing of restriction impacts infants’ physical and psychological development.",
+  "schema:funding": {
+    "@type": "schema:MonetaryGrant",
+    "schema:name": "Effects Of Traditional Cradling Practices On Infants' Physical, Motor, And Social Development",
+    "schema:url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=1349044",
+    "funder": {
+      "@type": "schema:FundingAgency",
+      "schema:name": "National Science Foundation",
+      "schema:alternateName": "NSF",
+      "schema:sameAs": "https://doi.org/10.13039/100000001"
+    }
+  },
+  "databrary:Investigator": [
+    {
+      "@type": "schema:Person",
+      "name": "Karasik, Lana",
+      "institution": "City University of New York"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Tamis-LaMonda, Catherine",
+      "institution": "New York University"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Adolph, Karen",
+      "institution": "New York University"
+    }
+  ],
+  "databrary:Collaborator": [
+    {
+      "@type": "schema:Person",
+      "name": "Kuchirko, Yana",
+      "institution": "Brooklyn College, City University of New York"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Schneider, Joshua",
+      "institution": "University of Pittsburgh"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Cole, Whitney Graham",
+      "institution": "New York University"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Rrjolli, Solida",
+      "institution": "College of Staten Island"
+    }
+  ],
+  "schema:citation": {
+    "@context": "https://schema.org",
+    "@id": "http://hdl.handle.net/10.1371/journal.pone.0204428",
+    "@type": "schema:ScholarlyArticle",
+    "schema:author": [
+      {
+        "@type": "schema:Person",
+        "schema:name": "Karasik, L. B."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Tamis-LeMonda, C. S."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Ossmy, O."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Adolph, K. E."
+      }
+    ],
+    "schema:name": "The ties that bind: Cradling in Tajikistan",
+    "schema:publisher": "PLoS One"
+  },
+  "databrary:hasRecords": [
+    {
+      "@type": "databrary:Record",
+      "name": "NY017",
+      "type": "session",
+      "release": "private"
+    }
+  ]
+}</code></pre>
+</section>
+<section id="from-university-libraries-archival-collections" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="from-university-libraries-archival-collections">From University Libraries Archival Collections</h4>
+<p>To draw on the example of another discipline: <a href="https://aspace.libraries.psu.edu">The University Libraries Archival Collections public frontend</a> for searching and retrieving archival records uses JSON-LD. The public user interface of ArchivesSpace selectively publishes data from the database, allowing for access to materials without unauthorized access to information that is of a sensitive nature (such as the contact or demographic information of donors), not suitable for public viewing (such as internal collection processing notes or accession records), or is of a particularly technical nature (such as digital file checksums).</p>
+<p>JSON-LD is embedded within &lt;script&gt; tags in the HTML generated by ArchivesSpace when a user clicks through to a record. An example of ArchivesSpace’s JSON-LD, in this case to describe the <a href="https://aspace.libraries.psu.edu/repositories/3/resources/215">T.R. Johns papers</a>, is provided below.</p>
+<pre><code>{
+  "@context": "http://schema.org/",
+  "@id": "https://aspace.libraries.psu.edu/repositories/3/resources/215",
+  "@type": [
+    "Collection",
+    "ArchiveComponent"
+  ],
+  "name": "T. R. Johns papers",
+  "identifier": "01616",
+  "description": "T.R. Johns was the General Manager and Vice President of the Bethlehem Mines Corporation/Industrial Collieries Corporation, the mining subsidiary of the Bethlehem Steel Corporation.",
+  "creator": [
+    {
+      "@id": "https://aspace.libraries.psu.edu/agents/people/12997",
+      "@type": "Person",
+      "name": "Johns, T. R. (Thomas Richards)"
+    }
+  ],
+  "dateCreated": [
+    "1853-1948"
+  ],
+  "materialExtent": [
+    {
+      "@type": "QuantitativeValue",
+      "unitText": "Linear Feet",
+      "value": "6"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Intangible",
+      "name": "Bituminous coal industry -- History -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal mines and mining -- Pennsylvania -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal mines and mining -- West Virginia -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal Strike, Heilwood, Pa., 1922"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Industrial management -- History -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Labor movement -- History -- 20th century"
+    }
+  ],
+  "genre": [
+    "Scrapbooks",
+    "Photographic",
+    "Artifacts"
+  ],
+  "inLanguage": [
+    {
+      "@type": "Language",
+      "name": "English"
+    }
+  ],
+  "holdingArchive": {
+    "@id": "https://aspace.libraries.psu.edu/repositories/3",
+    "@type": "ArchiveOrganization",
+    "name": "Eberly Family Special Collections Library",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": [
+        "104 Paterno Library",
+        "Penn State University"
+      ],
+      "addressLocality": "University Park",
+      "postalCode": "16802",
+      "addressCountry": "USA"
+    }
+  }
+}</code></pre>
+</section>
+</section>
+</section>
+<section id="databrary-2.0-university-libraries-meta-data-recommendations" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="databrary-2.0-university-libraries-meta-data-recommendations">Databrary 2.0: University Libraries Meta Data Recommendations</h2>
+<section id="project-scope" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="project-scope">Project scope</h3>
+<p>Databrary (<a href="https://databrary.org" class="uri">https://databrary.org</a>) is a restricted-access data library specialized for storing, streaming, and sharing video and audio recordings collected as research data or documentation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Databrary 2.0 is an NSF-funded project to build on the existing Databrary platform to ensure datasets stored on it comply with FAIR (findable, accessible, interoperable, reusable) standards through implementation of open metadata schema and vocabularies, documentation of these guidelines, and outreach to Databrary stakeholders.</p>
+<p>To move toward FAIR compliance, demographic information about participants in research studies for which data is stored in Databrary should comply with one or more open schema. Databrary’s internal logic regarding user privacy and compliance with federal and depositor rules around health data dictate the terms by which users and user groups may view certain data properties and values. This permission logic, internal to Databrary, must also comply with open schema, to be built and maintained by the Databrary project team.</p>
+<p>In furtherance of these goals the University Libraries reviewed the current demographic data stored about datasets and their constituent files in the current Databrary infrastructure, aligning each data property with one or more open schema in the domain of that property. This alignment will be reviewed by the Databrary team. The University Libraries also recommend the strategies below for documentation of the internal permission logic of Databrary, and on the documentation of data properties and values visible for each entry within that permission logic scheme.</p>
+</section>
+<section id="demographic-data-review" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="demographic-data-review">Demographic data review</h3>
+<p>The uses for which metadata in Databrary are designed are documented on its GitHub project page (<a href="https://github.com/databrary/metadata" class="uri">https://github.com/databrary/metadata</a>). The first priority of Databrary’s metadata design is to support open metadata schema and standards whenever possible. Among the schema supported by Databrary are the National Insitutes of Health (NIH) Common Data Elements; DataCite; and schema.org. Open serialization formats supported by Databrary include JSON-LD and the CSV Schema Language.</p>
+<p>In addition to supporting open metadata initiatives, Databrary seeks to permit self-curation of data by allowing depositors to select the schema that best represent their data sets. These can be at cross-purposes. For example, a depositor may have collected data representing demographic information about project participants that is from a closed scheme, or one that is proprietary to their own project. To ensure interoperability, Databrary may require provisions to align such closed or proprietary schema with selected open schema endorsed by the project.</p>
+<p>The <em>PLAY and Learning Across a Year</em> (PLAY) project (<a href="https://play-project.org" class="uri">https://play-project.org</a>) is a collaborative initiative by 65 researchers across 45 institutions in North America. Its primary purpose is to document play practices in early childhood development; a secondary purpose of the project is to model open, collaborative research and data management practices. To this end Databrary has documented the demographic data properties for which values are collected by PLAY.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> These are derived from participant agreements, pre- and post-visit questionnaires, and data collected at the home visits themselves.</p>
+<p>The PLAY project has two obstacles to ensuring FAIR data publication practices. The first is the collected data properties, which are not currently aligned thoroughly with open metadata schema (though work has been done to align key demographic properties with the NIH Common Data Elements). The second, and the more difficult to navigate, is the values assigned to those properties. There are open vocabularies in common use for assigning demographic values to properties, such as race and ethnicity, level of educational attainment, and geographical data. However, Databrary’s desire to allow self-curation of data extends to an individual researcher or project’s choice of demographic values; this may be at cross-purposes with a mandate to select a particular vocabulary for demographic information. Moreover, open schema with fixed values may not be sufficiently representative for demographic information such as gender or household structure. Open schema adoption within Databrary should be balanced against the needs of researchers to accurately reflect their project participants. <del>To this end the metadata strategies outlined here should be adopted with the consent of both researchers and, to the extent possible, project participants, through participant agreements.</del>Participant agreements may need to be revised in order to allow participants to consent to the use of metadata about them for data reuse purposes.</p>
+</section>
+<section id="recommendations-on-encoding-data" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="recommendations-on-encoding-data">Recommendations on encoding data</h3>
+<p>JSON-LD is a generally accepted standard for performing this work. JSON-LD is a data exchange format using JavaScript Object Notation (JSON), a widely accepted format for encoding structured data on the World Wide Web. JSON-LD is easily recognized by search engines for indexing and retrieval, and can be used for both general Web searches using tools like Google or DuckDuckGo as well as specific searches within scholarly indexes such as Google Scholar.</p>
+<section id="an-example-from-the-archives" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="an-example-from-the-archives">An example from the archives</h4>
+<p>To draw on the example of another discipline, members of the University Libraries team implement ArchivesSpace as the collection management and discovery system for archival materials held at both University Park and the Commonwealth Campus Libraries at Penn State. ArchivesSpace supports JSON-LD natively through its built-in public user interface, a public catalog of archival metadata used for search, discovery, and item retrieval. The public user interface of ArchivesSpace selectively publishes data from the database, allowing for access to materials without unauthorized access to information that is of a sensitive nature (such as the contact or demographic information of donors), not suitable for public viewing (such as internal collection processing notes or accession records), or is of a particularly technical nature (such as digital file checksums).</p>
+<p>JSON-LD is embedded within &lt;script&gt; tags in the HTML generated by ArchivesSpace when a user clicks through to a record. An example of ArchivesSpace’s JSON-LD, in this case to describe the <a href="https://aspace.libraries.psu.edu/repositories/3/resources/215">T.R. Johns papers</a>, is provided below.</p>
+<pre><code>{
+  "@context": "http://schema.org/",
+  "@id": "https://aspace.libraries.psu.edu/repositories/3/resources/215",
+  "@type": [
+    "Collection",
+    "ArchiveComponent"
+  ],
+  "name": "T. R. Johns papers",
+  "identifier": "01616",
+  "description": "T.R. Johns was the General Manager and Vice President of the Bethlehem Mines Corporation/Industrial Collieries Corporation, the mining subsidiary of the Bethlehem Steel Corporation.",
+  "creator": [
+    {
+      "@id": "https://aspace.libraries.psu.edu/agents/people/12997",
+      "@type": "Person",
+      "name": "Johns, T. R. (Thomas Richards)"
+    }
+  ],
+  "dateCreated": [
+    "1853-1948"
+  ],
+  "materialExtent": [
+    {
+      "@type": "QuantitativeValue",
+      "unitText": "Linear Feet",
+      "value": "6"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Intangible",
+      "name": "Bituminous coal industry -- History -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal mines and mining -- Pennsylvania -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal mines and mining -- West Virginia -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Coal Strike, Heilwood, Pa., 1922"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Industrial management -- History -- 20th century"
+    },
+    {
+      "@type": "Intangible",
+      "name": "Labor movement -- History -- 20th century"
+    }
+  ],
+  "genre": [
+    "Scrapbooks",
+    "Photographic",
+    "Artifacts"
+  ],
+  "inLanguage": [
+    {
+      "@type": "Language",
+      "name": "English"
+    }
+  ],
+  "holdingArchive": {
+    "@id": "https://aspace.libraries.psu.edu/repositories/3",
+    "@type": "ArchiveOrganization",
+    "name": "Eberly Family Special Collections Library",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": [
+        "104 Paterno Library",
+        "Penn State University"
+      ],
+      "addressLocality": "University Park",
+      "postalCode": "16802",
+      "addressCountry": "USA"
+    }
+  }
+}</code></pre>
+<p>While this particular use case of JSON-LD lacks features desired for the Databrary 2.0 project – it only implements linked data URIs that are native to the software, and it makes little effort to specify semantic characteristics of linked subject headings – it points toward a potential solution for making Databrary data sets more publicly accessible, and for researchers without Databrary credentials to identify research data in which they may have an interest.</p>
+<p>Schema.org has specific design notes for how it treats <a href="https://schema.org/docs/data-and-datasets.html">data and datasets</a>.</p>
+</section>
+<section id="worked-databrary-examples" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="worked-databrary-examples">Worked Databrary examples</h4>
+<p>The below is a partial worked example of how a Databrary volume may be expressed in schema.org JSON linked data. In cases where Schema properties do not exist, or only exist in partial forms (e.g.&nbsp;in the way that Schema handles race and ethnicity data for individuals), Databrary predicates have been provided.</p>
+<pre><code>{
+  "@context": {
+    "schema": "https://schema.org/",
+    "databrary": "https://databrary.org/"
+  },
+  "@id": "http://doi.org/10.17910/b7.11",
+  "@type": "schema:Dataset",
+  "schema:name": "The Ties That Bind: Cradling in Tajikistan",
+  "schema:description": "A traditional childrearing practice—“gahvora” cradling—in Tajikistan and other parts of Central Asia purportedly restricts movement of infants’ body and limbs. However, the practice has been documented only informally in anecdotal reports. Thus, this study had two research questions: (1) To what extent are infants’ movements restricted in the gahvora? (2) How is time in the gahvora distributed over a 24-hour day in infants from 1–24 months of age? To answer these questions, we video-recorded 146 mothers cradling their infants and interviewed them using 24-hour time diaries to determine the distribution of time infants spent in the gahvora within a day and across age. Infants’ movements were indeed severely restricted. Although mothers showed striking uniformity in how they restricted infants’ movements, they showed large individual differences in amount and distribution of daily use. Machine learning algorithms yielded three patterns of use: day and nighttime cradling, mostly nighttime cradling, and mostly daytime cradling, suggesting multiple functions of the cradling practice. Across age, time in the gahvora decreased, yet 20% of 12- to 24-month-olds spent more than 15 hours bound in the gahvora. We discuss the challenges and benefits of cultural research, and how the discovery of new phenomena may defy Western assumptions about childrearing and development. Future work will determine whether the extent and timing of restriction impacts infants’ physical and psychological development.",
+  "schema:funding": {
+    "@type": "schema:MonetaryGrant",
+    "schema:name": "Effects Of Traditional Cradling Practices On Infants' Physical, Motor, And Social Development",
+    "schema:url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=1349044",
+    "funder": {
+      "@type": "schema:FundingAgency",
+      "schema:name": "National Science Foundation",
+      "schema:alternateName": "NSF",
+      "schema:sameAs": "https://doi.org/10.13039/100000001"
+    }
+  },
+  "databrary:Investigator": [
+    {
+      "@type": "schema:Person",
+      "name": "Karasik, Lana",
+      "institution": "City University of New York"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Tamis-LaMonda, Catherine",
+      "institution": "New York University"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Adolph, Karen",
+      "institution": "New York University"
+    }
+  ],
+  "databrary:Collaborator": [
+    {
+      "@type": "schema:Person",
+      "name": "Kuchirko, Yana",
+      "institution": "Brooklyn College, City University of New York"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Schneider, Joshua",
+      "institution": "University of Pittsburgh"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Cole, Whitney Graham",
+      "institution": "New York University"
+    },
+    {
+      "@type": "schema:Person",
+      "name": "Rrjolli, Solida",
+      "institution": "College of Staten Island"
+    }
+  ],
+  "schema:citation": {
+    "@context": "https://schema.org",
+    "@id": "http://hdl.handle.net/10.1371/journal.pone.0204428",
+    "@type": "schema:ScholarlyArticle",
+    "schema:author": [
+      {
+        "@type": "schema:Person",
+        "schema:name": "Karasik, L. B."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Tamis-LeMonda, C. S."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Ossmy, O."
+      },
+      {
+        "@type": "schema:Person",
+        "schema:name": "Adolph, K. E."
+      }
+    ],
+    "schema:name": "The ties that bind: Cradling in Tajikistan",
+    "schema:publisher": "PLoS One"
+  },
+  "databrary:hasRecords": [
+    {
+      "@type": "databrary:Record",
+      "name": "NY017",
+      "type": "session",
+      "release": "private"
+    }
+  ]
+}</code></pre>
+<p>The referenced volume is <span class="citation" data-cites="Karasik2014-lx">(<a href="references.html#ref-Karasik2014-lx" role="doc-biblioref">Karasik, Tamis-Lemonda, and Adolph 2014</a>)</span>.</p>
+</section>
+</section>
+<section id="recommendations-on-documentation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="recommendations-on-documentation">Recommendations on documentation</h3>
+<p>Visibility of data properties and values within Databrary is driven by an internal permission logic system. This system controls the extent to which users may view properties and values for a Databrary project, based on their status within that project. For example, end users unaffiliated with a project but who wish to reuse its data would see only descriptive metadata about the project; PIs or researchers who work on the project would see a fuller representation of item-level demographic data. The permission levels are unique to Databrary. These permissions will be published as an open schema within the Databrary metadata documentation, and the visibility of each demographic data property as a function of permission levels will be published as a property therein across all schema serialization formats.</p>
+<p>Documentation of Databrary metadata practices should be done sufficiently to meet the needs of several stakeholder groups, including the Databrary project team, researchers or research teams interested in reusing data sets stored in Databrary or depositing their own, and metadata professionals seeking to reuse Databrary metadata products in different discovery systems. The documentation strategies outlined here should meet the needs of metadata specialists and Databrary project participants. Other documentation strategies, tailored to the needs of researchers without a technical background in metadata design, may be identified through future outreach work.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Karasik2014-lx" class="csl-entry" role="listitem">
+Karasik, Lana, Catherine Tamis-Lemonda, and Karen E Adolph. 2014. <span>“The Ties That Bind: Cradling in Tajikistan.”</span> <a href="https://doi.org/10.17910/b7.11">https://doi.org/10.17910/b7.11</a>.
+</div>
+<div id="ref-Wilkinson2016-qr" class="csl-entry" role="listitem">
+Wilkinson, Mark D, Michel Dumontier, I Jsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, et al. 2016. <span>“The <span>FAIR</span> Guiding Principles for Scientific Data Management and Stewardship.”</span> <em>Scientific <span>D</span>ata</em> 3 (March): 160018. <a href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>“About Databrary.” <a href="https://databrary.org/about.html" class="uri">https://databrary.org/about.html</a> (accessed 2021 March 23).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://github.com/databrary/metadata/blob/main/nih-cde.md<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./demographics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Demographic data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

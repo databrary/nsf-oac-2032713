@@ -1,0 +1,32 @@
+# `databraryr` R package
+
+![`databraryr` R package logo](include/img/databraryr-logo.png)
+
+This page summarizes information about the R package the team developed and enhanced with NSF support.
+
+## Background  {-}
+
+Rick Gilmore began development on an R package to use the Databrary PI in 2018.
+The original package was called `databraryapi`.
+Some of that work was supported by the Play & Learning Across a Year (PLAY) project award supported by NIH under [R01HD094830](https://reporter.nih.gov/search/y_CtF--A5Eq5siGqtwbLiQ/project-details/9500957).
+
+In summer of 2023, Gilmore moved the code base to the Databrary GitHub organization and renamed the package `databraryr` in accord with R package naming conventions.
+Gilmore and Spies worked to make the code base more robust and standards compliant.
+They submitted the package for review to the Comprehensive R Archive Network (CRAN) in late September 2023.
+The package was approved and made available via CRAN on October 23, 2023.
+
+The package underlies much of the work PI Gilmore has done to make Databrary's data holdings maximally available to the broadest possible community, especially via the Databrary analytics site (<https://databrary.github.io/analytics>).
+
+## Current (0.5.0) release {-}
+
+The R package is available here: <https://https://cran.r-project.org/web/packages/databraryr/>
+
+A full website describing all of the commands can be found at <https://databrary.github.io/databraryr/>.
+
+The package is freely available to everyone via the R command `install.packages('databraryr')`.
+
+## Roadmap {-}
+
+We are developing a [roadmap](https://github.com/orgs/databrary/projects/5/views/1) for the package.
+A major feature for a future release will be commands that enable scripted uploading of data and materials to Databrary.
+We are also in the early stages of developing a Python version of the package.

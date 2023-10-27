@@ -1,0 +1,19 @@
+# Resources
+
+This page describes how the site and its associated data were built.
+
+## Framework {-}
+
+The site was built in R Markdown/Quarto and rendered to HTML using [Quarto](https://quarto.org).
+
+Source code is located in `src/`. The GitHub site is at <https://github.com/databrary/nsf-oac-2032713>.
+The rendered HTML website is in `docs/`.
+We use GitHub's pages feature to serve the site.
+
+## Dependencies {-}
+
+The site makes use of several external resources.
+
+- Databrary analytics site: <https://databrary.github.io/analytics>.
+- `databraryr` package: <https://databrary.github.io/databraryr>
+- <https://github.com/databrary/metadata>.

@@ -6,7 +6,7 @@ The meeting sought feedback from the community on the topic:
 
 "Making shared data about human participants maximally useful for secondary research"
 
-## Participants
+## Participants {-}
 
 - Rick Gilmore, Penn State, Department of Psychology
 - Briana Wham, Penn State, University Libraries
@@ -19,9 +19,9 @@ The meeting sought feedback from the community on the topic:
 - Deborah Ehrenthal, Professor of Biobehavioral Health, Director, Socail Science Research Institute
 - Alaina Pearce, Assistant Research Professor, Department of Nutritional Sciences
 
-## Themes
+## Themes {-}
 
 Several invitees with specific data and metadata perspectives were unable to attend, the team shifted the focus to a discussion of what current Databrary offers researchers in terms of restricted access data storage and sharing and the systematic reporting of some core demographic data elements.
 
-## Findings
+## Findings {-}
 

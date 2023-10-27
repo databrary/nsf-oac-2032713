@@ -1,0 +1,22 @@
+# About {-}
+
+This site summarizes some of the work done under NSF OAC-2032713.
+It is intended as a supplement to the official report submitted to NSF.
+
+Separate pages describe the results of our [community meeting](community-feedback.qmd), some [recommendations](recommendations.qmd) for future design elements for Databrary 2.0, the development and release of the [`databraryr`](databraryr-pkg.qmd) R package, an [analysis](nsf-funding.qmd) of which projects on Databrary mention NSF as a funding source, a [report](demographics.qmd) on the demographic data stored and shared on Databrary, and a [report](metadata.qmd) by our metadata expert on future directions.
+
+## Investigators {-}
+
+Rick Gilmore, Principal Investigator
+Professor of Psychology
+The Pennsylvania State University
+
+Briana Wham, Co-Investigator
+Penn State University Libraries
+
+Kevin Clair
+Penn State University Libraries
+
+Jeff Spies, Consultant
+221b
+

@@ -1,0 +1,34 @@
+project:
+  type: book
+  output-dir: "../docs"
+  
+book:
+  title: "EAGER: Expanding public access to restricted research data"
+  subtitle: "Report on NSF OAC 2032713"
+  cover-image: include/img/databrary-nav-sm.jpg
+  author: ["Rick Gilmore", "Briana Wham", "Kevin Clair", "Jeff Spies"]
+  date: last-modified
+  chapters:
+    - index.qmd
+    - community-feedback.qmd
+    - recommendations.qmd
+    - databraryr-pkg.qmd
+    - nsf-funding.qmd
+    - demographics.qmd
+    - metadata.qmd
+    - references.qmd
+  appendices:  
+    - resources.qmd
+  repo-url: https://github.com/databrary/nsf-oac-2032713
+  repo-subdir: src
+
+bibliography: [include/bib/packages.bib, include/bib/references.bib]
+css: include/bib/apa.csl
+
+format:
+  html:
+    theme: cosmo
+  epub:
+    cover-image: include/img/databrary-nav-sm.jpg
+
+editor: source
