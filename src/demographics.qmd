@@ -36,7 +36,7 @@ knitr::include_graphics("include/img/databrary-ss-vol-8.png")
 ```
 
 The virtue of using this spreadsheet interface is that the current Databrary system permits a comma-separated value (CSV) format file of the spreadsheet to be easily exported.
-Indeed, the [`databraryr` package](databraryr-r-package.qmd) makes use of this feature, as does the [analytics pipeline](https://databrary.github.io/analytics/).
+Indeed, the [`databraryr` package](databraryr-pkg.qmd) makes use of this feature, as does the [analytics pipeline](https://databrary.github.io/analytics/).
 
 In the images below, the blue 'checked' variables are those the system presumes researchers will want to enter in the typical or default case.
 The grey 'checked' variables are generated internally by the Databrary system.

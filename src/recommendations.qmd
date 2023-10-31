@@ -1,4 +1,4 @@
-# Recommendations
+# Community Recommendations
 
 ## Overview {-}
 
@@ -11,13 +11,24 @@ This page summarizes some of those recommendations.
 
 ## Separate views of the same underlying data {-}
 
+A common use case among regular Databrary investigators is the repurposing of old video to answer new questions.
+This often involves taking a subset of videos collected in different studies and creating a new collection.
+At present, users who wish to share the new dataset to accompany a publication must re-upload videos to a new Databrary volume.
+The system checks a hash value for the file, and if it matches one already in storage, Databrary points to the new file rather than store multiple identical copies.
+But the link or links from a video to multiple Databrary volumes are not exposed to a user.
+Nor is data about which volume and video is the "parent"--the dataset that was collected first--and which is the "child" represented to users.
+So, the provenance of the videos is hard to track.
+
+In a future version of Databrary 2.0, we propose that the system natively support multiple "views" of the same underlying data, and expose to users the pedigree of the underlying files.
+We tested one implementation of this in a custom sandbox system.
+In that system, users could browse Databrary and "bookmark" datasets or individual data files that they found interesting, then create a new derivative dataset from a collection of their bookmarks.
+Under the hood, Databrary kept track of the original sources of the selected items and made those available for display to the user.
+
 ## Extend use of icons to indicate access levels {-}
 
 Databrary currently implements a standard set of access levels that are indicated by a consistent vocabulary and set of icons that are called the Databrary Release Levels.
 
-```{r, fig.cap="Databrary Release Levels from https://databrary.org/support/irb/release-levels.html"}
-knitr::include_url("https://databrary.org/support/irb/release-levels.html")
-```
+![Databrary Release Levels from <https://databrary.org/support/irb/release-levels.html>](include/img/databrary-release-levels.png)
 
 These release levels fit the needs of researchers who carry out research with human participants where the data are not especially sensitive.
 Should Databrary expand to meet the needs of other research communities, such as those where invasive video recordings of non-human animal subjects are collected, or videos gathered in clinical contexts, the release and access levels might need to be modified.
@@ -36,26 +47,23 @@ Note that we have altered the "full" views below because this site is accessible
 
 :::
 
-```{r, out.width="40%", fig.cap="Two views of the same asset."}
-knitr::include_graphics("include/img/thumbnail-full.png")
-knitr::include_graphics("include/img/thumbnail-limited.png")
-```
+![Thumbnail view of [@TamisLemonda] for an authorized user who is logged in.](include/img/thumbnail-full.png)
 
-There is no indication that a thumbnail is available, just masked from view.
+![Thumbnail view of [@TamisLemonda] for a user who is *not* logged in, including the public.](include/img/thumbnail-limited.png)
+
+There is no indication that a more informative thumbnail is available, just masked from view.
 Nor is there an alert to the user that they should log in, if they have an account.
 
 Similarly, if a user has supplied image or video highlights, the possibly identifiable images or videos are shown to authorized and logged-in users, but not to the public.
 
-```{r, out.width="40%", fig.cap="Two views of the same asset."}
-knitr::include_graphics("include/img/highlights-full.png")
-knitr::include_graphics("include/img/highlights-limited.png")
-```
+![Highlights on [@TamisLemonda] for an authorized user who is logged in](include/img/highlights-full.png)
+
+![Highlights on [@TamisLemonda] for a user who is *not* logged in, including the public.](include/img/highlights-limited.png)
 
 And in the participant-level spreadsheet data, exact birth and test dates are shown (if participants have given sharing permission) to authorized and logged-in users, but not to the general public.
 
-```{r}
-knitr::include_graphics("include/img/spreadsheet-full.png")
-knitr::include_graphics("include/img/spreadsheet-limited.png")
-```
+![Participant-level spreadsheet from [@TamisLemonda] shown to an authorized user.](include/img/spreadsheet-full.png)
+
+![Participant-level spreadsheet from [@TamisLemonda] shown to a user who is *not* logged in, including the public.](include/img/spreadsheet-limited.png)
 
 We recommend that Databrary 2.0 adopt different shading for full vs. restricted views and mouse-over tooltips to indicate where there is more data to be shown than is currently being shown.

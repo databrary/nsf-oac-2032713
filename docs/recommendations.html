@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EAGER: Expanding public access to restricted research data - 2&nbsp; Recommendations</title>
+<title>EAGER: Expanding public access to restricted research data - 2&nbsp; Community Recommendations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -109,7 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recommendations.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recommendations.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Community Recommendations</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recommendations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Community Recommendations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -224,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Community Recommendations</span></h1>
 </div>
 
 
@@ -247,14 +232,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="separate-views-of-the-same-underlying-data" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="separate-views-of-the-same-underlying-data">Separate views of the same underlying data</h2>
+<p>A common use case among regular Databrary investigators is the repurposing of old video to answer new questions. This often involves taking a subset of videos collected in different studies and creating a new collection. At present, users who wish to share the new dataset to accompany a publication must re-upload videos to a new Databrary volume. The system checks a hash value for the file, and if it matches one already in storage, Databrary points to the new file rather than store multiple identical copies. But the link or links from a video to multiple Databrary volumes are not exposed to a user. Nor is data about which volume and video is the “parent”–the dataset that was collected first–and which is the “child” represented to users. So, the provenance of the videos is hard to track.</p>
+<p>In a future version of Databrary 2.0, we propose that the system natively support multiple “views” of the same underlying data, and expose to users the pedigree of the underlying files. We tested one implementation of this in a custom sandbox system. In that system, users could browse Databrary and “bookmark” datasets or individual data files that they found interesting, then create a new derivative dataset from a collection of their bookmarks. Under the hood, Databrary kept track of the original sources of the selected items and made those available for display to the user.</p>
 </section>
 <section id="extend-use-of-icons-to-indicate-access-levels" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="extend-use-of-icons-to-indicate-access-levels">Extend use of icons to indicate access levels</h2>
 <p>Databrary currently implements a standard set of access levels that are indicated by a consistent vocabulary and set of icons that are called the Databrary Release Levels.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"https://databrary.org/support/irb/release-levels.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<iframe src="https://databrary.org/support/irb/release-levels.html" width="672" height="400px" data-external="1">
-</iframe>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="include/img/databrary-release-levels.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Databrary Release Levels from <a href="https://databrary.org/support/irb/release-levels.html" class="uri">https://databrary.org/support/irb/release-levels.html</a></figcaption>
+</figure>
 </div>
 <p>These release levels fit the needs of researchers who carry out research with human participants where the data are not especially sensitive. Should Databrary expand to meet the needs of other research communities, such as those where invasive video recordings of non-human animal subjects are collected, or videos gathered in clinical contexts, the release and access levels might need to be modified. Even in these cases, we think that there are virtues to adopting standard terminology and graphic icons to indicate the levels of release. Moreover, we think that keeping the <em>number</em> of release levels is wise to reduce the possibility of mislabeling data and to reduce confusion among potential data re-users.</p>
 </section>
@@ -265,62 +253,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="rmdnote">
 <p>Note that we have altered the “full” views below because this site is accessible to the public.</p>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/thumbnail-full.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="include/img/thumbnail-full.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption class="figure-caption">Two views of the same asset.</figcaption>
+<p><img src="include/img/thumbnail-full.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Thumbnail view of <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> for an authorized user who is logged in.</figcaption>
 </figure>
 </div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/thumbnail-limited.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="include/img/thumbnail-limited.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption class="figure-caption">Two views of the same asset.</figcaption>
+<p><img src="include/img/thumbnail-limited.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Thumbnail view of <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> for a user who is <em>not</em> logged in, including the public.</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>There is no indication that a thumbnail is available, just masked from view. Nor is there an alert to the user that they should log in, if they have an account.</p>
+<p>There is no indication that a more informative thumbnail is available, just masked from view. Nor is there an alert to the user that they should log in, if they have an account.</p>
 <p>Similarly, if a user has supplied image or video highlights, the possibly identifiable images or videos are shown to authorized and logged-in users, but not to the public.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/highlights-full.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="include/img/highlights-full.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption class="figure-caption">Two views of the same asset.</figcaption>
+<p><img src="include/img/highlights-full.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Highlights on <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> for an authorized user who is logged in</figcaption>
 </figure>
 </div>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/highlights-limited.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="include/img/highlights-limited.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption class="figure-caption">Two views of the same asset.</figcaption>
+<p><img src="include/img/highlights-limited.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Highlights on <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> for a user who is <em>not</em> logged in, including the public.</figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>And in the participant-level spreadsheet data, exact birth and test dates are shown (if participants have given sharing permission) to authorized and logged-in users, but not to the general public.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/spreadsheet-full.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="include/img/spreadsheet-full.png" class="img-fluid" width="554"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="include/img/spreadsheet-full.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Participant-level spreadsheet from <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> shown to an authorized user.</figcaption>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"include/img/spreadsheet-limited.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="include/img/spreadsheet-limited.png" class="img-fluid" width="557"></p>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="include/img/spreadsheet-limited.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Participant-level spreadsheet from <span class="citation" data-cites="TamisLemonda">(<a href="references.html#ref-TamisLemonda" role="doc-biblioref">Tamis-Lemonda 2013</a>)</span> shown to a user who is <em>not</em> logged in, including the public.</figcaption>
+</figure>
 </div>
 <p>We recommend that Databrary 2.0 adopt different shading for full vs.&nbsp;restricted views and mouse-over tooltips to indicate where there is more data to be shown than is currently being shown.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-TamisLemonda" class="csl-entry" role="listitem">
+Tamis-Lemonda, Catherine. 2013. <span>“Language, Cognitive, and Socio-Emotional Skills from 9 Months Until Their Transition to First Grade in u.s. Children from African-American, Dominican, Mexican, and Chinese Backgrounds.”</span> <a href="https://doi.org/10.17910/B7CC74">https://doi.org/10.17910/B7CC74</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

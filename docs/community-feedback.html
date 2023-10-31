@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="include/bib/apa.csl">
 </head>
@@ -118,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Community Recommendations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,6 +230,30 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="findings" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="findings">Findings</h2>
+<ul>
+<li>Implementing the most flexible and powerful search capability will be essential. Elastic Search was recommended.
+<ul>
+<li>Databrary currently implements a version of Solr. The Databrary 2.0 sandbox has experimented with GraphQL.</li>
+</ul></li>
+<li>Future research is going to depend on placing people in context by linking to other data sources, including those tied to geography. How do we link this broadly to their community (location, socioeconomic status, etc.) while preserving participant privacy? Latitude and longitude are the most useful, but also the riskiest.
+<ul>
+<li>The Play &amp; Learning Across a Year (<a href="https://play-project.org">PLAY</a>) Project is collecting sharing permission in some locations that will permit sharing of Census Block Group-level data. The project uses Databrary extensively now, and will share data with the research community when the project is complete. The intent is to share county-level Census data for all of the <span class="math inline">\(~n=1,000\)</span> families, since this level of geographic resolution does not require participant permission. So, PLAY represents one illustration of how broader, geographically informed, data might be shared more widely.</li>
+<li>The PLAY project also implements the same algorithm used by the NIMH Data Archive for generating a globally unique identifer (GUID). PLAY will use these identifiers.</li>
+</ul></li>
+<li>Are there requirements for the way the data are organized? Variables and format? Are there controlled vocabularies or standards for sex, ethnicity/race, etc? How do we know how the information was collected (what was asked and who answered)? Better documentation of what measurements were and how they were collected would be optimal. One solution would be need to upload their protocol.
+<ul>
+<li>Databrary 1.0 has semi-controlled vocabularies for some variables (see the page on <a href="./metadata.html">metadata</a>), but these are limited in scope, and only some investigators use them. Users may upload additional data, including information about questionnaires, context for the data collection, but this is at the discretion of individual researchers.</li>
+<li>PLAY has shared its entire <a href="https://play-project.org/">protocol openly</a>, all parent report questions, and has already published a <a href="https://PLAY-behaviorome/KoBoToolbox">protocol</a> illustrating how those questions are handled after data collection. But none of these practices are standard in the field.</li>
+</ul></li>
+<li>NIH has published the PhenX toolkits and many of these are implemented in the NIH Toolbox and NIH Infant and Toddler (Baby) Toolboxes. Could that work be build upon?
+<ul>
+<li>Yes. There have been some preliminary discussions with the lead PIs on the NIH Baby Toolbox about storing and sharing the video portions of those data on Databrary. But there is much more work that could be done in this vein.</li>
+</ul></li>
+<li>What is your objective for the data that will be in Databrary? What data should be collected from everybody will be based on the goal of what is included in Databrary?
+<ul>
+<li>Video about natural behavior needs a home and is much richer when it is linked with other kinds of data. Databrary aspires to be that home.</li>
+</ul></li>
+</ul>
 
 
 </section>
@@ -474,7 +500,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./recommendations.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Recommendations</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Community Recommendations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
