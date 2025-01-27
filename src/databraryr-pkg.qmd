@@ -19,7 +19,7 @@ The package underlies much of the work PI Gilmore has done to make Databrary's d
 
 ## Current (0.5.0) release {-}
 
-The R package is available here: <https://https://cran.r-project.org/web/packages/databraryr/>
+The R package is available here: <https://cran.r-project.org/package=osfr>.
 
 A full website describing all of the commands can be found at <https://databrary.github.io/databraryr/>.
 
